@@ -205,7 +205,7 @@ const AboutPage = () => {
                 data-aos="fade-right"
                 data-aos-duration="1300"
               >
-                Eki Zulfar Rachman
+                Krish Maheshwari
               </span>
             </h2>
             
@@ -214,7 +214,7 @@ const AboutPage = () => {
               data-aos="fade-right"
               data-aos-duration="1500"
             >
-             Seorang lulusan Teknik Jaringan Komputer dan Telekomunikasi yang memiliki ketertarikan besar dalam pengembangan Front-End. Saya berfokus pada menciptakan pengalaman digital yang menarik dan selalu berusaha memberikan solusi terbaik dalam setiap proyek yang saya kerjakan.
+             I am a B.Tech Computer Science and Engineering (Core) student with a solid foundation in programming, data structures and software development. My interests lie in Machine Learning and Data Science, where I enjoy transforming data into actionable insights and building intelligent, scalable solutions. Driven by curiosity and a commitment to growth, I continuously seek to expand my knowledge, master emerging technologies, and apply my skills to solve real world problems with innovation and precision.
             </p>
 
                {/* Quote Section */}
