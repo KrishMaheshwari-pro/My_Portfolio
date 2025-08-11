@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Share2, User, Mail, MessageSquare, Send } from "lucide-react";
+import { Share2, User, Mail, MessageSquare, Send, Linkedin, Instagram, Github, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import SocialLinks from "../components/SocialLinks";
-import Komentar from "../components/Commentar";
 import Swal from "sweetalert2";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -35,8 +34,8 @@ const ContactPage = () => {
     setIsSubmitting(true);
 
     Swal.fire({
-      title: 'Mengirim Pesan...',
-      html: 'Harap tunggu selagi kami mengirim pesan Anda',
+      title: 'Sending Message...',
+      html: 'Please wait while we send your message.',
       allowOutsideClick: false,
       didOpen: () => {
         Swal.showLoading();
@@ -52,7 +51,7 @@ const ContactPage = () => {
       submitData.append('name', formData.name);
       submitData.append('email', formData.email);
       submitData.append('message', formData.message);
-      submitData.append('_subject', 'Pesan Baru dari Website Portfolio');
+      submitData.append('_subject', 'New Message from Portfolio Website');
       submitData.append('_captcha', 'false'); // Nonaktifkan captcha
       submitData.append('_template', 'table'); // Format email sebagai tabel
 
@@ -64,8 +63,8 @@ const ContactPage = () => {
 
      
       Swal.fire({
-        title: 'Berhasil!',
-        text: 'Pesan Anda telah berhasil terkirim!',
+        title: 'Success!',
+        text: 'Your message has been sent successfully!',
         icon: 'success',
         confirmButtonColor: '#6366f1',
         timer: 2000,
@@ -81,8 +80,8 @@ const ContactPage = () => {
     } catch (error) {
       if (error.request && error.request.status === 0) {
         Swal.fire({
-          title: 'Berhasil!',
-          text: 'Pesan Anda telah berhasil terkirim!',
+          title: 'Success!',
+          text: 'Your message has been sent successfully!',
           icon: 'success',
           confirmButtonColor: '#6366f1',
           timer: 2000,
@@ -96,8 +95,8 @@ const ContactPage = () => {
         });
       } else {
         Swal.fire({
-          title: 'Gagal!',
-          text: 'Terjadi kesalahan. Silakan coba lagi nanti.',
+          title: 'Failed!',
+          text: 'An error occurred. Please try again later.',
           icon: 'error',
           confirmButtonColor: '#6366f1'
         });
@@ -108,8 +107,8 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="px-[5%] sm:px-[5%] lg:px-[10%] " >
-      <div className="text-center lg:mt-[5%] mt-10 mb-2 sm:px-0 px-[5%]">
+    <div className="bg-[#030014] py-8 px-[5%] sm:px-[5%] lg:px-[10%]" id="Contact">
+      <div className="text-center mb-16">
         <h2
           data-aos="fade-down"
           data-aos-duration="1000"
@@ -133,30 +132,25 @@ const ContactPage = () => {
           data-aos-duration="1100"
           className="text-slate-400 max-w-2xl mx-auto text-sm md:text-base mt-2"
         >
-          
-
-          
+          Like what you see? Reach out VIA EMAIL to collaborate!
         </p>
       </div>
       <div
-        className="h-auto py-10 flex items-center justify-center 2xl:pr-[3.1%] lg:pr-[3.8%]  md:px-0"
-        id="Contact"
+        className="container mx-auto flex items-center justify-center"
       >
         <div className="container px-[1%] grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-[45%_55%] 2xl:grid-cols-[35%_65%] gap-12" >
           <div
-        
             className="bg-white/5 backdrop-blur-xl rounded-3xl shadow-2xl p-5 py-10 sm:p-10 transform transition-all duration-500 hover:shadow-[#6366f1]/10"
           >
-            <div className="flex justify-between items-start mb-8">
+            <div className="mb-8">
               <div>
                 <h2 className="text-4xl font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-[#6366f1] to-[#a855f7]">
-                  Hubungi
+                  Contact
                 </h2>
                 <p className="text-gray-400">
-                  Got a question? Drop me a message and I’ll get back to you as soon as possible.
+                  Got a question? Drop me a message and I'll get back to you as soon as possible.
                 </p>
               </div>
-              <Share2 className="w-10 h-10 text-[#6366f1] opacity-50" />
             </div>
 
             <form 
@@ -172,7 +166,7 @@ const ContactPage = () => {
                 <input
                   type="text"
                   name="name"
-                  placeholder="Nama Anda"
+                  placeholder="Your Name"
                   value={formData.name}
                   onChange={handleChange}
                   disabled={isSubmitting}
@@ -187,9 +181,9 @@ const ContactPage = () => {
               >
                 <Mail className="absolute left-4 top-4 w-5 h-5 text-gray-400 group-focus-within:text-[#6366f1] transition-colors" />
                 <input
-                  type="email"
+                  type="text"
                   name="email"
-                  placeholder="Email Anda"
+                  placeholder="Your Email or Number"
                   value={formData.email}
                   onChange={handleChange}
                   disabled={isSubmitting}
@@ -205,7 +199,7 @@ const ContactPage = () => {
                 <MessageSquare className="absolute left-4 top-4 w-5 h-5 text-gray-400 group-focus-within:text-[#6366f1] transition-colors" />
                 <textarea
                   name="message"
-                  placeholder="Pesan Anda"
+                  placeholder="Your Message"
                   value={formData.message}
                   onChange={handleChange}
                   disabled={isSubmitting}
@@ -221,17 +215,111 @@ const ContactPage = () => {
                 className="w-full bg-gradient-to-r from-[#6366f1] to-[#a855f7] text-white py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-[#6366f1]/20 active:scale-[0.98] flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
                 <Send className="w-5 h-5" />
-                {isSubmitting ? 'Mengirim...' : 'Kirim Pesan'}
+                {isSubmitting ? 'Sending...' : 'Submit'}
               </button>
             </form>
-
-            <div className="mt-10 pt-6 border-t border-white/10 flex justify-center space-x-6">
-              <SocialLinks />
-            </div>
           </div>
 
-          <div className="  bg-white/5 backdrop-blur-xl rounded-3xl p-3 py-3 md:p-10 md:py-8 shadow-2xl transform transition-all duration-500 hover:shadow-[#6366f1]/10">
-            <Komentar />
+          <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-3 py-3 md:p-10 md:py-8 shadow-2xl transform transition-all duration-500 hover:shadow-[#6366f1]/10">
+            <div className="flex justify-between items-start mb-8">
+              <div>
+                <h2 className="text-4xl font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-[#6366f1] to-[#a855f7]">
+                  Connect with Me
+                </h2>
+                <p className="text-gray-400">
+                </p>
+              </div>
+            </div>
+            {/* Email Section - Bigger Rectangle */}
+            <div className="mb-8">
+              <a 
+                href="mailto:krishmaheshwari111@gmail.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block"
+              >
+                <div className="bg-gradient-to-r from-[#6366f1] to-[#a855f7] rounded-xl p-6 hover:scale-105 transition-all duration-300 cursor-pointer">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <Mail className="w-8 h-8 text-white" />
+                      <div>
+                        <h3 className="text-white font-bold text-xl">Email</h3>
+                        <p className="text-white/80 text-sm">krishmaheshwari111@gmail.com</p>
+                      </div>
+                    </div>
+                    <ExternalLink className="w-6 h-6 text-white" />
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            {/* Social Links Grid */}
+            <div className="grid grid-cols-2 gap-6">
+              {/* LinkedIn */}
+              <a 
+                href="https://www.linkedin.com/in/krish-maheshwari-2980a5319/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block"
+              >
+                <div className="bg-white/10 rounded-xl p-6 hover:bg-white/20 transition-all duration-300 cursor-pointer border border-white/20 hover:border-[#6366f1]/30">
+                  <div className="flex items-center gap-4">
+                    <Linkedin className="w-8 h-8 text-[#0077b5]" />
+                    <span className="text-white font-medium text-lg">LinkedIn</span>
+                  </div>
+                </div>
+              </a>
+
+              {/* Instagram */}
+              <a 
+                href="https://www.instagram.com/krishmaheshwari07?igsh=MThrYWl1aGtsNXE4Nw==" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block"
+              >
+                <div className="bg-white/10 rounded-xl p-6 hover:bg-white/20 transition-all duration-300 cursor-pointer border border-white/20 hover:border-[#6366f1]/30">
+                  <div className="flex items-center gap-4">
+                    <Instagram className="w-8 h-8 text-[#E4405F]" />
+                    <span className="text-white font-medium text-lg">Instagram</span>
+                  </div>
+                </div>
+              </a>
+
+              {/* GitHub */}
+              <a 
+                href="https://github.com/KrishMaheshwari-pro" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block"
+              >
+                <div className="bg-white/10 rounded-xl p-6 hover:bg-white/20 transition-all duration-300 cursor-pointer border border-white/20 hover:border-[#6366f1]/30">
+                  <div className="flex items-center gap-4">
+                    <Github className="w-8 h-8 text-white" />
+                    <span className="text-white font-medium text-lg">GitHub</span>
+                  </div>
+                </div>
+              </a>
+
+              {/* LeetCode */}
+              <a 
+                href="https://leetcode.com/u/G1eiynMb2m/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block"
+              >
+                <div className="bg-white/10 rounded-xl p-6 hover:bg-white/20 transition-all duration-300 cursor-pointer border border-white/20 hover:border-[#6366f1]/30">
+                  <div className="flex items-center gap-4">
+                                         {/* LeetCode Logo */}
+                     <img 
+                       src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png" 
+                       alt="LeetCode" 
+                       className="w-8 h-8 object-contain"
+                     />
+                    <span className="text-white font-medium text-lg">LeetCode</span>
+                  </div>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </div>

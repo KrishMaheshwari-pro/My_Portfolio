@@ -12,6 +12,8 @@ import WelcomeScreen from "./Pages/WelcomeScreen";
 import { AnimatePresence } from 'framer-motion';
 import notfound from "./Pages/404";
 import NotFoundPage from "./Pages/404";
+import Education from "./components/Education";
+import Experience from "./components/Experience";
 
 const LandingPage = ({ showWelcome, setShowWelcome }) => {
   return (
@@ -28,6 +30,8 @@ const LandingPage = ({ showWelcome, setShowWelcome }) => {
           <AnimatedBackground />
           <Home />
           <About />
+          <Education />
+          <Experience />
           <Portofolio />
           <ContactPage />
           <footer>

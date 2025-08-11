@@ -15,7 +15,7 @@ const Navbar = () => {
         { href: "#Contact", label: "Contact" },
     ];
 
-    useEffect(() => {
+    useEffect(() => { 
         const handleScroll = () => {
             setScrolled(window.scrollY > 20);
             const sections = navItems.map(item => {
@@ -23,14 +23,14 @@ const Navbar = () => {
                 if (section) {
                     return {
                         id: item.href.replace("#", ""),
-                        offset: section.offsetTop - 550,
+                        offset: section.offsetTop - 200, // Adjusted offset for better detection
                         height: section.offsetHeight
                     };
                 }
                 return null;
             }).filter(Boolean);
 
-            const currentPosition = window.scrollY;
+            const currentPosition = window.scrollY + window.innerHeight / 2; // Use middle of viewport
             const active = sections.find(section => 
                 currentPosition >= section.offset && 
                 currentPosition < section.offset + section.height
@@ -58,9 +58,15 @@ const Navbar = () => {
         e.preventDefault();
         const section = document.querySelector(href);
         if (section) {
-            const top = section.offsetTop - 100;
+            const navbarHeight = 64; // h-16 = 64px
+            const sectionTop = section.offsetTop;
+            
+            // Always scroll to show the section header at the very top
+            // Reduce navbar height offset to bring header even closer to top
+            const scrollPosition = sectionTop - navbarHeight - 20;
+            
             window.scrollTo({
-                top: top,
+                top: Math.max(0, scrollPosition),
                 behavior: "smooth"
             });
         }
@@ -86,7 +92,7 @@ const Navbar = () => {
                             onClick={(e) => scrollToSection(e, "#Home")}
                             className="text-xl font-bold bg-gradient-to-r from-[#a855f7] to-[#6366f1] bg-clip-text text-transparent"
                         >
-                            Based in Mumbai
+                            Krish Maheshwari
                         </a>
                     </div>
         

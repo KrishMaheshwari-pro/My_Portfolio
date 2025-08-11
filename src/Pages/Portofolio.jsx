@@ -194,9 +194,9 @@ export default function FullWidthTabs() {
 
   // Sisa dari komponen (return statement) tidak ada perubahan
   return (
-    <div className="md:px-[10%] px-[5%] w-full sm:mt-0 mt-[3rem] bg-[#030014] overflow-hidden" id="Portofolio">
+    <div className="bg-[#030014] py-8 px-[5%] sm:px-[5%] lg:px-[10%] overflow-hidden" id="Portofolio">
       {/* Header section - unchanged */}
-      <div className="text-center pb-10" data-aos="fade-up" data-aos-duration="1000">
+      <div className="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
         <h2 className="inline-block text-3xl md:text-5xl font-bold text-center mx-auto text-transparent bg-clip-text bg-gradient-to-r from-[#6366f1] to-[#a855f7]">
           <span style={{
             color: '#6366f1',
@@ -336,29 +336,282 @@ export default function FullWidthTabs() {
             )}
           </TabPanel>
 
-          <TabPanel value={value} index={1} dir={theme.direction}>
-            <div className="container mx-auto flex justify-center items-center overflow-hidden">
-              <div className="grid grid-cols-1 md:grid-cols-3 md:gap-5 gap-4">
-                {displayedCertificates.map((certificate, index) => (
-                  <div
-                    key={certificate.id || index}
-                    data-aos={index % 3 === 0 ? "fade-up-right" : index % 3 === 1 ? "fade-up" : "fade-up-left"}
-                    data-aos-duration={index % 3 === 0 ? "1000" : index % 3 === 1 ? "1200" : "1000"}
-                  >
-                    <Certificate ImgSertif={certificate.Img} />
-                  </div>
-                ))}
-              </div>
-            </div>
-            {certificates.length > initialItems && (
-              <div className="mt-6 w-full flex justify-start">
-                <ToggleButton
-                  onClick={() => toggleShowMore('certificates')}
-                  isShowingMore={showAllCertificates}
-                />
-              </div>
-            )}
-          </TabPanel>
+                     <TabPanel value={value} index={1} dir={theme.direction}>
+             <div className="container mx-auto flex justify-center items-center overflow-hidden">
+               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                 {/* Certificate 1 */}
+                 <div
+                   data-aos="fade-up-right"
+                   data-aos-duration="1000"
+                 >
+                   <div className="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
+                     <a 
+                       href="#" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       className="block"
+                       onClick={(e) => {
+                         e.preventDefault();
+                         // TODO: Add your URL here for Certificate 1
+                         window.open("https://www.linkedin.com/learning/certificates/1234567890", "_blank");
+                         console.log(`Certificate 1 clicked`);
+                       }}
+                     >
+                       <h3 className="text-white font-bold text-lg mb-2 hover:text-blue-400 transition-colors">
+                         GitHub Foundations 1
+                       </h3>
+                       <p className="text-gray-400 text-sm">
+                         GitHub
+                       </p>
+                     </a>
+                   </div>
+                 </div>
+
+                 {/* Certificate 2 */}
+                 <div
+                   data-aos="fade-up"
+                   data-aos-duration="1200"
+                 >
+                   <div className="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
+                     <a 
+                       href="#" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       className="block"
+                       onClick={(e) => {
+                         e.preventDefault();
+                         // TODO: Add your URL here for Certificate 2
+                         console.log(`Certificate 2 clicked`);
+                       }}
+                     >
+                       <h3 className="text-white font-bold text-lg mb-2 hover:text-blue-400 transition-colors">
+                         GitHub Foundations 2
+                       </h3>
+                       <p className="text-gray-400 text-sm">
+                         GitHub
+                       </p>
+                     </a>
+                   </div>
+                 </div>
+
+                 {/* Certificate 3 */}
+                 <div
+                   data-aos="fade-up-left"
+                   data-aos-duration="1000"
+                 >
+                   <div className="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
+                     <a 
+                       href="#" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       className="block"
+                       onClick={(e) => {
+                         e.preventDefault();
+                         // TODO: Add your URL here for Certificate 3
+                         console.log(`Certificate 3 clicked`);
+                       }}
+                     >
+                       <h3 className="text-white font-bold text-lg mb-2 hover:text-blue-400 transition-colors">
+                         GitHub Foundations 3
+                       </h3>
+                       <p className="text-gray-400 text-sm">
+                         GitHub
+                       </p>
+                     </a>
+                   </div>
+                 </div>
+
+                 {/* Certificate 4 */}
+                 <div
+                   data-aos="fade-up"
+                   data-aos-duration="1100"
+                 >
+                   <div className="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
+                     <a 
+                       href="#" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       className="block"
+                       onClick={(e) => {
+                         e.preventDefault();
+                         // TODO: Add your URL here for Certificate 4
+                         console.log(`Certificate 4 clicked`);
+                       }}
+                     >
+                       <h3 className="text-white font-bold text-lg mb-2 hover:text-blue-400 transition-colors">
+                         GitHub Foundations 4
+                       </h3>
+                       <p className="text-gray-400 text-sm">
+                         GitHub
+                       </p>
+                     </a>
+                   </div>
+                 </div>
+
+                 {/* Certificate 5 */}
+                 <div
+                   data-aos="fade-up-right"
+                   data-aos-duration="1000"
+                 >
+                   <div className="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
+                     <a 
+                       href="#" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       className="block"
+                       onClick={(e) => {
+                         e.preventDefault();
+                         // TODO: Add your URL here for Certificate 5
+                         console.log(`Certificate 5 clicked`);
+                       }}
+                     >
+                       <h3 className="text-white font-bold text-lg mb-2 hover:text-blue-400 transition-colors">
+                         GitHub Foundations 5
+                       </h3>
+                       <p className="text-gray-400 text-sm">
+                         GitHub
+                       </p>
+                     </a>
+                   </div>
+                 </div>
+
+                 {/* Certificate 6 */}
+                 <div
+                   data-aos="fade-up"
+                   data-aos-duration="1200"
+                 >
+                   <div className="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
+                     <a 
+                       href="#" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       className="block"
+                       onClick={(e) => {
+                         e.preventDefault();
+                         // TODO: Add your URL here for Certificate 6
+                         console.log(`Certificate 6 clicked`);
+                       }}
+                     >
+                       <h3 className="text-white font-bold text-lg mb-2 hover:text-blue-400 transition-colors">
+                         GitHub Foundations 6
+                       </h3>
+                       <p className="text-gray-400 text-sm">
+                         GitHub
+                       </p>
+                     </a>
+                   </div>
+                 </div>
+
+                 {/* Certificate 7 */}
+                 <div
+                   data-aos="fade-up-left"
+                   data-aos-duration="1000"
+                 >
+                   <div className="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
+                     <a 
+                       href="#" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       className="block"
+                       onClick={(e) => {
+                         e.preventDefault();
+                         // TODO: Add your URL here for Certificate 7
+                         console.log(`Certificate 7 clicked`);
+                       }}
+                     >
+                       <h3 className="text-white font-bold text-lg mb-2 hover:text-blue-400 transition-colors">
+                         GitHub Foundations 7
+                       </h3>
+                       <p className="text-gray-400 text-sm">
+                         GitHub
+                       </p>
+                     </a>
+                   </div>
+                 </div>
+
+                 {/* Certificate 8 */}
+                 <div
+                   data-aos="fade-up"
+                   data-aos-duration="1100"
+                 >
+                   <div className="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
+                     <a 
+                       href="#" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       className="block"
+                       onClick={(e) => {
+                         e.preventDefault();
+                         // TODO: Add your URL here for Certificate 8
+                         console.log(`Certificate 8 clicked`);
+                       }}
+                     >
+                       <h3 className="text-white font-bold text-lg mb-2 hover:text-blue-400 transition-colors">
+                         GitHub Foundations 8
+                       </h3>
+                       <p className="text-gray-400 text-sm">
+                         GitHub
+                       </p>
+                     </a>
+                   </div>
+                 </div>
+
+                 {/* Certificate 9 */}
+                 <div
+                   data-aos="fade-up-right"
+                   data-aos-duration="1000"
+                 >
+                   <div className="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
+                     <a 
+                       href="#" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       className="block"
+                       onClick={(e) => {
+                         e.preventDefault();
+                         // TODO: Add your URL here for Certificate 9
+                         console.log(`Certificate 9 clicked`);
+                       }}
+                     >
+                       <h3 className="text-white font-bold text-lg mb-2 hover:text-blue-400 transition-colors">
+                         GitHub Foundations 9
+                       </h3>
+                       <p className="text-gray-400 text-sm">
+                         GitHub
+                       </p>
+                     </a>
+                   </div>
+                 </div>
+
+                 {/* Certificate 10 */}
+                 <div
+                   data-aos="fade-up"
+                   data-aos-duration="1200"
+                 >
+                   <div className="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
+                     <a 
+                       href="#" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       className="block"
+                       onClick={(e) => {
+                         e.preventDefault();
+                         // TODO: Add your URL here for Certificate 10
+                         console.log(`Certificate 10 clicked`);
+                       }}
+                     >
+                       <h3 className="text-white font-bold text-lg mb-2 hover:text-blue-400 transition-colors">
+                         GitHub Foundations 10
+                       </h3>
+                       <p className="text-gray-400 text-sm">
+                         GitHub
+                       </p>
+                     </a>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </TabPanel>
 
           <TabPanel value={value} index={2} dir={theme.direction}>
             <div className="container mx-auto flex justify-center items-center overflow-hidden pb-[5%]">
