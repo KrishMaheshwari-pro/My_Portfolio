@@ -338,30 +338,31 @@ export default function FullWidthTabs() {
 
                      <TabPanel value={value} index={1} dir={theme.direction}>
              <div className="container mx-auto flex justify-center items-center overflow-hidden">
-               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+               <div className="grid grid-cols-1 gap-4 w-full">
                  {/* Certificate 1 */}
                  <div
                    data-aos="fade-up-right"
                    data-aos-duration="1000"
                  >
-                   <div className="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
+                   <div className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
                      <a 
-                       href="#" 
+                       href="" 
                        target="_blank" 
                        rel="noopener noreferrer"
-                       className="block"
+                       className="block w-full"
+                       style={{ display: "block", width: "100%" }}
                        onClick={(e) => {
                          e.preventDefault();
                          // TODO: Add your URL here for Certificate 1
-                         window.open("https://www.linkedin.com/learning/certificates/1234567890", "_blank");
+                         window.open("https://www.hackerrank.com/certificates/iframe/1ee525e14c2f", "_blank");
                          console.log(`Certificate 1 clicked`);
                        }}
                      >
-                       <h3 className="text-white font-bold text-lg mb-2 hover:text-blue-400 transition-colors">
-                         GitHub Foundations 1
+                       <h3 className="text-white font-bold text-lg mb-3 hover:text-blue-400 transition-colors">
+                       Software Development Intern Role
                        </h3>
                        <p className="text-gray-400 text-sm">
-                         GitHub
+                         HackerRank
                        </p>
                      </a>
                    </div>
@@ -372,7 +373,7 @@ export default function FullWidthTabs() {
                    data-aos="fade-up"
                    data-aos-duration="1200"
                  >
-                   <div className="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
+                   <div className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
                      <a 
                        href="#" 
                        target="_blank" 
@@ -381,14 +382,15 @@ export default function FullWidthTabs() {
                        onClick={(e) => {
                          e.preventDefault();
                          // TODO: Add your URL here for Certificate 2
+                         window.open("https://drive.google.com/file/d/1LvcrGA4snsU9jbOBYStlVY2AgkmBCtIb/view", "_blank");
                          console.log(`Certificate 2 clicked`);
                        }}
                      >
-                       <h3 className="text-white font-bold text-lg mb-2 hover:text-blue-400 transition-colors">
-                         GitHub Foundations 2
+                       <h3 className="text-white font-bold text-lg mb-3 hover:text-blue-400 transition-colors">
+                         Data Structures and Algorithms in C/C++
                        </h3>
                        <p className="text-gray-400 text-sm">
-                         GitHub
+                         Pregrad
                        </p>
                      </a>
                    </div>
@@ -399,7 +401,7 @@ export default function FullWidthTabs() {
                    data-aos="fade-up-left"
                    data-aos-duration="1000"
                  >
-                   <div className="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
+                   <div className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
                      <a 
                        href="#" 
                        target="_blank" 
@@ -408,14 +410,15 @@ export default function FullWidthTabs() {
                        onClick={(e) => {
                          e.preventDefault();
                          // TODO: Add your URL here for Certificate 3
+                         window.open("https://www.codechef.com/certificates/public/ee24b81", "_blank");
                          console.log(`Certificate 3 clicked`);
                        }}
                      >
-                       <h3 className="text-white font-bold text-lg mb-2 hover:text-blue-400 transition-colors">
-                         GitHub Foundations 3
+                       <h3 className="text-white font-bold text-lg mb-3 hover:text-blue-400 transition-colors">
+                         Advanced Data Structures and Algorithms
                        </h3>
                        <p className="text-gray-400 text-sm">
-                         GitHub
+                         CodeChef
                        </p>
                      </a>
                    </div>
@@ -426,7 +429,7 @@ export default function FullWidthTabs() {
                    data-aos="fade-up"
                    data-aos-duration="1100"
                  >
-                   <div className="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
+                   <div className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
                      <a 
                        href="#" 
                        target="_blank" 
@@ -435,14 +438,15 @@ export default function FullWidthTabs() {
                        onClick={(e) => {
                          e.preventDefault();
                          // TODO: Add your URL here for Certificate 4
+                         window.open("https://drive.google.com/file/d/1jIGvh71FFNhM1CqbnFKQ24FMN_y80dAl/view", "_blank");
                          console.log(`Certificate 4 clicked`);
                        }}
                      >
-                       <h3 className="text-white font-bold text-lg mb-2 hover:text-blue-400 transition-colors">
-                         GitHub Foundations 4
+                       <h3 className="text-white font-bold text-lg mb-3 hover:text-blue-400 transition-colors">
+                       Design and Analysis of Algorithms
                        </h3>
                        <p className="text-gray-400 text-sm">
-                         GitHub
+                         NPTEL
                        </p>
                      </a>
                    </div>
@@ -453,7 +457,7 @@ export default function FullWidthTabs() {
                    data-aos="fade-up-right"
                    data-aos-duration="1000"
                  >
-                   <div className="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
+                   <div className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
                      <a 
                        href="#" 
                        target="_blank" 
@@ -462,14 +466,15 @@ export default function FullWidthTabs() {
                        onClick={(e) => {
                          e.preventDefault();
                          // TODO: Add your URL here for Certificate 5
+                         window.open("https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/pmnMSL4QiQ9JCgE3W/kkE9HyeNcw6rwCRGw_pmnMSL4QiQ9JCgE3W_mzE27mRgqZNTEPnnu_1754659569771_completion_certificate.pdf ", "_blank");
                          console.log(`Certificate 5 clicked`);
                        }}
                      >
-                       <h3 className="text-white font-bold text-lg mb-2 hover:text-blue-400 transition-colors">
-                         GitHub Foundations 5
+                       <h3 className="text-white font-bold text-lg mb-3 hover:text-blue-400 transition-colors">
+                       Solutions Architecture Job Simulation
                        </h3>
                        <p className="text-gray-400 text-sm">
-                         GitHub
+                         Amazon AWS
                        </p>
                      </a>
                    </div>
@@ -480,7 +485,7 @@ export default function FullWidthTabs() {
                    data-aos="fade-up"
                    data-aos-duration="1200"
                  >
-                   <div className="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
+                   <div className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
                      <a 
                        href="#" 
                        target="_blank" 
@@ -489,14 +494,15 @@ export default function FullWidthTabs() {
                        onClick={(e) => {
                          e.preventDefault();
                          // TODO: Add your URL here for Certificate 6
+                         window.open("https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/9PBTqmSxAf6zZTseP/io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_mzE27mRgqZNTEPnnu_1754660196487_completion_certificate.pdf", "_blank");
                          console.log(`Certificate 6 clicked`);
                        }}
                      >
-                       <h3 className="text-white font-bold text-lg mb-2 hover:text-blue-400 transition-colors">
-                         GitHub Foundations 6
+                       <h3 className="text-white font-bold text-lg mb-3 hover:text-blue-400 transition-colors">
+                       Data Analytics Job Simulation
                        </h3>
                        <p className="text-gray-400 text-sm">
-                         GitHub
+                        Delloite
                        </p>
                      </a>
                    </div>
@@ -507,7 +513,7 @@ export default function FullWidthTabs() {
                    data-aos="fade-up-left"
                    data-aos-duration="1000"
                  >
-                   <div className="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
+                   <div className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
                      <a 
                        href="#" 
                        target="_blank" 
@@ -516,14 +522,15 @@ export default function FullWidthTabs() {
                        onClick={(e) => {
                          e.preventDefault();
                          // TODO: Add your URL here for Certificate 7
+                         window.open("https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Sj7temL583QAYpHXD/E6McHJDKsQYh79moz_Sj7temL583QAYpHXD_mzE27mRgqZNTEPnnu_1754659892073_completion_certificate.pdf", "_blank");
                          console.log(`Certificate 7 clicked`);
                        }}
                      >
-                       <h3 className="text-white font-bold text-lg mb-2 hover:text-blue-400 transition-colors">
-                         GitHub Foundations 7
+                       <h3 className="text-white font-bold text-lg mb-3 hover:text-blue-400 transition-colors">
+                         Software Engineering Job Simulation
                        </h3>
                        <p className="text-gray-400 text-sm">
-                         GitHub
+                         JP Morgan
                        </p>
                      </a>
                    </div>
@@ -534,7 +541,7 @@ export default function FullWidthTabs() {
                    data-aos="fade-up"
                    data-aos-duration="1100"
                  >
-                   <div className="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
+                   <div className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
                      <a 
                        href="#" 
                        target="_blank" 
@@ -546,7 +553,7 @@ export default function FullWidthTabs() {
                          console.log(`Certificate 8 clicked`);
                        }}
                      >
-                       <h3 className="text-white font-bold text-lg mb-2 hover:text-blue-400 transition-colors">
+                       <h3 className="text-white font-bold text-lg mb-3 hover:text-blue-400 transition-colors">
                          GitHub Foundations 8
                        </h3>
                        <p className="text-gray-400 text-sm">
@@ -561,7 +568,7 @@ export default function FullWidthTabs() {
                    data-aos="fade-up-right"
                    data-aos-duration="1000"
                  >
-                   <div className="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
+                   <div className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
                      <a 
                        href="#" 
                        target="_blank" 
@@ -573,7 +580,7 @@ export default function FullWidthTabs() {
                          console.log(`Certificate 9 clicked`);
                        }}
                      >
-                       <h3 className="text-white font-bold text-lg mb-2 hover:text-blue-400 transition-colors">
+                       <h3 className="text-white font-bold text-lg mb-3 hover:text-blue-400 transition-colors">
                          GitHub Foundations 9
                        </h3>
                        <p className="text-gray-400 text-sm">
@@ -588,7 +595,7 @@ export default function FullWidthTabs() {
                    data-aos="fade-up"
                    data-aos-duration="1200"
                  >
-                   <div className="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
+                   <div className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
                      <a 
                        href="#" 
                        target="_blank" 
@@ -600,7 +607,7 @@ export default function FullWidthTabs() {
                          console.log(`Certificate 10 clicked`);
                        }}
                      >
-                       <h3 className="text-white font-bold text-lg mb-2 hover:text-blue-400 transition-colors">
+                       <h3 className="text-white font-bold text-lg mb-3 hover:text-blue-400 transition-colors">
                          GitHub Foundations 10
                        </h3>
                        <p className="text-gray-400 text-sm">
