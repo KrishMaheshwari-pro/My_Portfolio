@@ -130,7 +130,7 @@ const ContactPage = () => {
         <p
           data-aos="fade-up"
           data-aos-duration="1100"
-          className="text-slate-400 max-w-2xl mx-auto text-sm md:text-base mt-2"
+          className="text-slate-400 max-w-2xl mx-auto text-base md:text-lg mt-6"
         >
           Like what you see? Reach out VIA EMAIL to collaborate!
         </p>
@@ -230,95 +230,106 @@ const ContactPage = () => {
                 </p>
               </div>
             </div>
-            {/* Email Section - Bigger Rectangle */}
-            <div className="mb-8">
-              <a 
-                href="mailto:krishmaheshwari111@gmail.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="block"
-              >
-                <div className="bg-gradient-to-r from-[#6366f1] to-[#a855f7] rounded-xl p-6 hover:scale-105 transition-all duration-300 cursor-pointer">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <Mail className="w-8 h-8 text-white" />
-                      <div>
-                        <h3 className="text-white font-bold text-xl">Email</h3>
-                        <p className="text-white/80 text-sm">krishmaheshwari111@gmail.com</p>
+            
+            {/* Main Container Box */}
+            <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-16 border border-white/20">
+              {/* Email Section - Bigger Rectangle */}
+              <div className="mb-8">
+                <a 
+                  href="mailto:krishmaheshwari111@gmail.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block"
+                >
+                  <div className="bg-white/10 rounded-xl px-4 py-8 hover:bg-white/15 transition-all duration-300 cursor-pointer border border-white/20 hover:border-white/30 group">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-4">
+                        <Mail className="w-8 h-8 text-white transition-colors" />
+                        <div>
+                          <h3 className="text-white font-bold text-xl transition-colors">Email</h3>
+                          <p className="text-white/80 text-sm transition-colors">krishmaheshwari111@gmail.com</p>
+                        </div>
                       </div>
+                      <ExternalLink className="w-6 h-6 text-white transition-colors" />
                     </div>
-                    <ExternalLink className="w-6 h-6 text-white" />
                   </div>
-                </div>
-              </a>
-            </div>
+                </a>
+              </div>
 
-            {/* Social Links Grid */}
-            <div className="grid grid-cols-2 gap-6">
-              {/* LinkedIn */}
-              <a 
-                href="https://www.linkedin.com/in/krish-maheshwari-2980a5319/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="block"
-              >
-                <div className="bg-white/10 rounded-xl p-6 hover:bg-white/20 transition-all duration-300 cursor-pointer border border-white/20 hover:border-[#6366f1]/30">
-                  <div className="flex items-center gap-4">
-                    <Linkedin className="w-8 h-8 text-[#0077b5]" />
-                    <span className="text-white font-medium text-lg">LinkedIn</span>
+              {/* Social Links Grid */}
+              <div className="grid grid-cols-2 gap-6">
+                {/* LinkedIn */}
+                <a 
+                  href="https://www.linkedin.com/in/krish-maheshwari-2980a5319/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block"
+                >
+                  <div className="bg-white/10 rounded-xl px-3 py-4 hover:bg-[#0077b5]/30 transition-all duration-300 cursor-pointer border border-white/20 hover:border-[#0077b5]/50 group">
+                    <div className="flex items-center gap-3">
+                      <div className="bg-[#0077b5]/20 rounded-lg p-2 group-hover:bg-[#0077b5]/30 transition-all">
+                        <Linkedin className="w-5 h-5 text-[#0077b5] group-hover:text-[#0077b5] transition-colors" />
+                      </div>
+                      <span className="text-white font-medium text-base group-hover:text-[#0077b5] transition-colors">LinkedIn</span>
+                    </div>
                   </div>
-                </div>
-              </a>
+                </a>
 
-              {/* Instagram */}
-              <a 
-                href="https://www.instagram.com/krishmaheshwari07?igsh=MThrYWl1aGtsNXE4Nw==" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="block"
-              >
-                <div className="bg-white/10 rounded-xl p-6 hover:bg-white/20 transition-all duration-300 cursor-pointer border border-white/20 hover:border-[#6366f1]/30">
-                  <div className="flex items-center gap-4">
-                    <Instagram className="w-8 h-8 text-[#E4405F]" />
-                    <span className="text-white font-medium text-lg">Instagram</span>
+                {/* Instagram */}
+                <a 
+                  href="https://www.instagram.com/krishmaheshwari07?igsh=MThrYWl1aGtsNXE4Nw==" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block"
+                >
+                  <div className="bg-white/10 rounded-xl px-3 py-4 hover:bg-[#E4405F]/30 transition-all duration-300 cursor-pointer border border-white/20 hover:border-[#E4405F]/50 group">
+                    <div className="flex items-center gap-3">
+                      <div className="bg-[#E4405F]/20 rounded-lg p-2 group-hover:bg-[#E4405F]/30 transition-all">
+                        <Instagram className="w-5 h-5 text-[#E4405F] group-hover:text-[#E4405F] transition-colors" />
+                      </div>
+                      <span className="text-white font-medium text-base group-hover:text-[#E4405F] transition-colors">Instagram</span>
+                    </div>
                   </div>
-                </div>
-              </a>
+                </a>
 
-              {/* GitHub */}
-              <a 
-                href="https://github.com/KrishMaheshwari-pro" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="block"
-              >
-                <div className="bg-white/10 rounded-xl p-6 hover:bg-white/20 transition-all duration-300 cursor-pointer border border-white/20 hover:border-[#6366f1]/30">
-                  <div className="flex items-center gap-4">
-                    <Github className="w-8 h-8 text-white" />
-                    <span className="text-white font-medium text-lg">GitHub</span>
+                {/* GitHub */}
+                <a 
+                  href="https://github.com/KrishMaheshwari-pro" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block"
+                >
+                  <div className="bg-white/10 rounded-xl px-3 py-4 hover:bg-white/20 transition-all duration-300 cursor-pointer border border-white/20 hover:border-[#333]/50 group">
+                    <div className="flex items-center gap-3">
+                      <div className="bg-gray-300/20 rounded-lg p-2 group-hover:bg-[#333]/30 transition-all">
+                        <Github className="w-5 h-5 text-[#333] group-hover:text-[#333] transition-colors" />
+                      </div>
+                      <span className="text-white font-medium text-base group-hover:text-[#333] transition-colors">GitHub</span>
+                    </div>
                   </div>
-                </div>
-              </a>
+                </a>
 
-              {/* LeetCode */}
-              <a 
-                href="https://leetcode.com/u/G1eiynMb2m/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="block"
-              >
-                <div className="bg-white/10 rounded-xl p-6 hover:bg-white/20 transition-all duration-300 cursor-pointer border border-white/20 hover:border-[#6366f1]/30">
-                  <div className="flex items-center gap-4">
-                                         {/* LeetCode Logo */}
-                     <img 
-                       src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png" 
-                       alt="LeetCode" 
-                       className="w-8 h-8 object-contain"
-                     />
-                    <span className="text-white font-medium text-lg">LeetCode</span>
+                {/* LeetCode */}
+                <a 
+                  href="https://leetcode.com/u/G1eiynMb2m/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block"
+                >
+                  <div className="bg-white/10 rounded-xl px-3 py-4 hover:bg-[#FFA116]/30 transition-all duration-300 cursor-pointer border border-white/20 hover:border-[#FFA116]/50 group">
+                    <div className="flex items-center gap-3">
+                      <div className="bg-[#FFA116]/20 rounded-lg p-2 group-hover:bg-[#FFA116]/30 transition-all">
+                        <img 
+                          src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png" 
+                          alt="LeetCode" 
+                          className="w-5 h-5 object-contain group-hover:brightness-110 transition-all"
+                        />
+                      </div>
+                      <span className="text-white font-medium text-base group-hover:text-[#FFA116] transition-colors">LeetCode</span>
+                    </div>
                   </div>
-                </div>
-              </a>
+                </a>
+              </div>
             </div>
           </div>
         </div>

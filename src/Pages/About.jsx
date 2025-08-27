@@ -85,7 +85,7 @@ const AboutPage = () => {
   return (
     <div className="bg-[#030014] py-8 text-white overflow-hidden px-[5%] sm:px-[5%] lg:px-[10%]" id="About">
       <Header />
-      <div className="w-full mx-auto pt-8 sm:pt-12 relative">
+      <div className="w-full mx-auto pt-4 sm:pt-8 relative">
         <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div className="space-y-6 text-center lg:text-left">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold" data-aos="fade-right" data-aos-duration="1000">
@@ -97,7 +97,12 @@ const AboutPage = () => {
             I am a B.Tech Computer Science and Engineering (Core) student with a solid foundation in programming, data structures and software development and my interests lie in Machine Learning and Data Science. Driven by curiosity and a commitment to growth, I continuously seek to expand my knowledge, master emerging technologies, and apply my skills to solve real world problems with innovation and precision.            </p>
 
             {/* Quote */}
-            <div className="relative bg-gradient-to-br from-[#6366f1]/5 via-transparent to-[#a855f7]/5 border border-[#6366f1]/30 rounded-2xl p-4 my-6 backdrop-blur-md shadow-2xl overflow-hidden" data-aos="fade-up" data-aos-duration="1700">
+            <div className="relative bg-gradient-to-br from-[#6366f1]/5 via-transparent to-[#a855f7]/5 border border-[#6366f1]/30 rounded-2xl p-4 my-6 backdrop-blur-md shadow-2xl overflow-hidden group" data-aos="fade-up" data-aos-duration="1700">
+              <div className="absolute -inset-6 opacity-[25%] z-0 hidden sm:block">
+                <div className="absolute inset-0 bg-gradient-to-r from-violet-600 via-indigo-500 to-purple-600 rounded-full blur-2xl animate-spin-slower" />
+                <div className="absolute inset-0 bg-gradient-to-l from-fuchsia-500 via-rose-500 to-pink-600 rounded-full blur-2xl animate-pulse-slow opacity-50" />
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-600 via-cyan-500 to-teal-400 rounded-full blur-2xl animate-float opacity-50" />
+              </div>
               <div className="absolute top-2 right-4 w-16 h-16 bg-gradient-to-r from-[#6366f1]/20 to-[#a855f7]/20 rounded-full blur-xl"></div>
               <div className="absolute -bottom-4 -left-2 w-12 h-12 bg-gradient-to-r from-[#a855f7]/20 to-[#6366f1]/20 rounded-full blur-lg"></div>
               <div className="absolute top-3 left-4 text-[#6366f1] opacity-30">

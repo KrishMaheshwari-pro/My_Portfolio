@@ -181,10 +181,13 @@ const Home = () => {
 
                 {/* Description */}
                 <div className="mt-8 inline-block" data-aos="fade-up" data-aos-delay="1000">
-                  <div className="px-7 py-4 rounded-2xl bg-[#0c0621] border border-indigo-500/20 whitespace-nowrap">
-                    <p className="text-sm md:text-base text-gray-300 font-medium italic">
-                      "Leveraging AI as a professional tool, not a replacement."
-                    </p>
+                  <div className="relative group">
+                    <div className="absolute -inset-0.5 bg-gradient-to-r from-[#6366f1] to-[#a855f7] rounded-2xl blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
+                    <div className="relative px-7 py-4 rounded-2xl bg-[#0c0621] border border-indigo-500/20 whitespace-nowrap">
+                      <p className="text-sm md:text-base text-gray-300 font-medium italic">
+                        "Leveraging AI as a professional tool, not a replacement."
+                      </p>
+                    </div>
                   </div>
                 </div>
 

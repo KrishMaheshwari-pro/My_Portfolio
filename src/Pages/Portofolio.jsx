@@ -107,15 +107,17 @@ const techStacks = [
   { icon: "html.svg", language: "HTML" },
   { icon: "css.svg", language: "CSS" },
   { icon: "javascript.svg", language: "JavaScript" },
-  { icon: "tailwind.svg", language: "Tailwind CSS" },
+  { icon: "c.svg", language: "C" },
+  { icon: "c++.svg", language: "C++" },
+  { icon: "python.svg", language: "Python" },
+  { icon: "go.svg", language: "GO" },
+  { icon: "MongoDB.svg", language: "MongoDB" },
+  { icon: "expresss.svg", language: "Express" },
   { icon: "reactjs.svg", language: "ReactJS" },
-  { icon: "vite.svg", language: "Vite" },
   { icon: "nodejs.svg", language: "Node JS" },
-  { icon: "bootstrap.svg", language: "Bootstrap" },
-  { icon: "firebase.svg", language: "Firebase" },
-  { icon: "MUI.svg", language: "Material UI" },
-  { icon: "vercel.svg", language: "Vercel" },
-  { icon: "SweetAlert.svg", language: "SweetAlert2" },
+  { icon: "sql.svg", language: "SQL" },
+  { icon: "ms excel.svg", language: "Excel" },
+  { icon: "cloud AWS.svg", language: "Cloud AWS" },
 ];
 
 export default function FullWidthTabs() {
@@ -308,7 +310,174 @@ export default function FullWidthTabs() {
         >
           <TabPanel value={value} index={0} dir={theme.direction}>
             <div className="container mx-auto flex justify-center items-center overflow-hidden">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3 gap-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-6xl">
+                {/* Project 1 */}
+                <div
+                  data-aos="fade-up-right"
+                  data-aos-duration="1000"
+                  className="h-full"
+                >
+                  <div className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 border border-gray-700 hover:border-gray-600 h-full">
+                    <h3 className="text-white font-bold text-lg mb-3">
+                      Diamond-Analysis-Project
+                    </h3>
+                    <ul className="text-gray-400 text-sm mb-4 space-y-1">
+                      <li>• Comprehensive analysis to understand factors influencing diamond prices</li>
+                      <li>• Involved data cleaning, exploratory data analysis, and data visualization</li>
+                      <li>• Correlation analysis between diamond prices and features like carat weight, cut, color, and clarity</li>
+                    </ul>
+                    <div className="flex gap-3 mt-auto">
+                      <a
+                        href="https://github.com/yourusername/diamond-analysis-project"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors duration-300 text-sm font-medium"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="16 18 22 12 16 6"></polyline>
+                          <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        Source Code
+                      </a>
+                      <a
+                        href="https://diamond-analysis-demo.vercel.app"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md transition-colors duration-300 text-sm font-medium"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                          <polyline points="15 3 21 3 21 9"></polyline>
+                          <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                        Live Demo
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Project 2 */}
+                <div
+                  data-aos="fade-up"
+                  data-aos-duration="1200"
+                  className="h-full"
+                >
+                  <div className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 border border-gray-700 hover:border-gray-600 h-full">
+                    <h3 className="text-white font-bold text-lg mb-3">
+                    Multiple Excel Scraper
+                    </h3>
+                    <ul className="text-gray-400 text-sm mb-4 space-y-1">
+                    <li>• A Python code that automates extracting data from multiple Excel files together</li>
+                      <li>• Automates extraction from hundreds of Excel files at once and removes irrelevant data</li>
+                      <li>• Ensures consistency by handling inconsistent headers, skipped data, and duplicates</li>
+                    </ul>
+                    <div className="flex gap-3 mt-auto">
+                      <a
+                        href="https://github.com/KrishMaheshwari-pro/Excel_Scraper"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors duration-300 text-sm font-medium"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="16 18 22 12 16 6"></polyline>
+                          <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        Source Code
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Project 3 */}
+                <div
+                  data-aos="fade-up-left"
+                  data-aos-duration="1000"
+                  className="h-full"
+                >
+                  <div className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 border border-gray-700 hover:border-gray-600 h-full">
+                    <h3 className="text-white font-bold text-lg mb-3">
+                      E-Casino Suite
+                    </h3>
+                    <ul className="text-gray-400 text-sm mb-4 space-y-1">
+                      <li>• A JavaScript powered platform that brings classic casino games like Blackjack, Roulette and Spinning Wheel</li>
+                      <li>• Implements core game mechanics with random odds</li>
+                      <li>• Offers an interactive, browser-based experience with engaging visuals and smooth gameplay</li>
+                    </ul>
+                    <div className="flex gap-3 mt-auto">
+                      <a
+                        href="https://github.com/KrishMaheshwari-pro/CASINO"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors duration-300 text-sm font-medium"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="16 18 22 12 16 6"></polyline>
+                          <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        Source Code
+                      </a>
+                      <a
+                        href="https://krishmaheshwari-pro.github.io/CASINO/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md transition-colors duration-300 text-sm font-medium"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                          <polyline points="15 3 21 3 21 9"></polyline>
+                          <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                        Live Demo
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Project 4 */}
+                <div
+                  data-aos="fade-up"
+                  data-aos-duration="1100"
+                  className="h-full"
+                >
+                  <div className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 border border-gray-700 hover:border-gray-600 h-full">
+                    <h3 className="text-white font-bold text-lg mb-3">
+                      Online Sudoko Game
+                    </h3>
+                    <ul className="text-gray-400 text-sm mb-4 space-y-1">
+                      <li>• A web-based Sudoku game built using HTML, CSS, and JavaScript</li>
+                      <li>• Includes features like puzzle validation, conflict highlighting, and auto-solving </li>
+                      <li>• Lets players generate new puzzles, reset grids, and practice logical skills</li>
+                    </ul>
+                    <div className="flex gap-3 mt-auto">
+                      <a
+                        href="https://github.com/KrishMaheshwari-pro/sudoko_game"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors duration-300 text-sm font-medium"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="16 18 22 12 16 6"></polyline>
+                          <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        Source Code
+                      </a>
+                      <a
+                        href="https://krishmaheshwari-pro.github.io/sudoko_game/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md transition-colors duration-300 text-sm font-medium"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                          <polyline points="15 3 21 3 21 9"></polyline>
+                          <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                        Live Demo
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
                 {displayedProjects.map((project, index) => (
                   <div
                     key={project.id || index}
