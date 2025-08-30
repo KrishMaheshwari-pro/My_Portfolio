@@ -706,7 +706,7 @@ export default function FullWidthTabs() {
                  </div>
 
                  {/* Certificate 8 */}
-                 <div
+                 {/* <div
                    data-aos="fade-up"
                    data-aos-duration="1100"
                  >
@@ -730,10 +730,10 @@ export default function FullWidthTabs() {
                        </p>
                      </a>
                    </div>
-                 </div>
+                 </div> */}
 
                  {/* Certificate 9 */}
-                 <div
+                 {/* <div
                    data-aos="fade-up-right"
                    data-aos-duration="1000"
                  >
@@ -757,10 +757,10 @@ export default function FullWidthTabs() {
                        </p>
                      </a>
                    </div>
-                 </div>
+                 </div> */}
 
                  {/* Certificate 10 */}
-                 <div
+                 {/* <div
                    data-aos="fade-up"
                    data-aos-duration="1200"
                  >
@@ -784,7 +784,7 @@ export default function FullWidthTabs() {
                        </p>
                      </a>
                    </div>
-                 </div>
+                 </div> */}
                </div>
              </div>
            </TabPanel>
