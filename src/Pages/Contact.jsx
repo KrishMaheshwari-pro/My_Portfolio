@@ -44,7 +44,7 @@ const ContactPage = () => {
 
     try {
       // Ganti dengan email Anda di FormSubmit
-      const formSubmitUrl = 'https://formsubmit.co/myuselessbin@gmail.com';
+      const formSubmitUrl = 'https://formsubmit.co/myuselessbin.com';
       
       // Siapkan data form untuk FormSubmit
       const submitData = new FormData();
@@ -107,38 +107,27 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="bg-[#030014] py-8 px-[5%] sm:px-[5%] lg:px-[10%]" id="Contact">
-      <div className="text-center mb-16">
+    <div className="bg-[#030014] py-6 sm:py-8 lg:py-12 px-4 sm:px-[5%] lg:px-[10%]" id="Contact">
+      <div className="text-center mb-8 sm:mb-12 lg:mb-16">
         <h2
           data-aos="fade-down"
           data-aos-duration="1000"
-          className="inline-block text-3xl md:text-5xl font-bold text-center mx-auto text-transparent bg-clip-text bg-gradient-to-r from-[#6366f1] to-[#a855f7]"
+          className="inline-block text-2xl sm:text-3xl md:text-5xl font-bold text-center mx-auto"
         >
-          <span
-            style={{
-              color: "#6366f1",
-              backgroundImage:
-                "linear-gradient(45deg, #6366f1 10%, #a855f7 93%)",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
+          <span className="bg-gradient-to-r from-[#6366f1] to-[#a855f7] bg-clip-text text-transparent">
             Contact Me
           </span>
         </h2>
         <p
           data-aos="fade-up"
           data-aos-duration="1100"
-          className="text-slate-400 max-w-2xl mx-auto text-base md:text-lg mt-6"
+          className="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base md:text-lg mt-4 sm:mt-6 px-4"
         >
           Like what you see? Reach out VIA EMAIL to collaborate!
         </p>
       </div>
-      <div
-        className="container mx-auto flex items-center justify-center"
-      >
-        <div className="container px-[1%] grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-[45%_55%] 2xl:grid-cols-[35%_65%] gap-12" >
+      <div className="container mx-auto max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-[45%_55%] 2xl:grid-cols-[40%_60%] gap-6 sm:gap-8 lg:gap-12" >
           <div
             className="bg-white/5 backdrop-blur-xl rounded-3xl shadow-2xl p-5 py-10 sm:p-10 transform transition-all duration-500 hover:shadow-[#6366f1]/10"
           >
@@ -155,14 +144,14 @@ const ContactPage = () => {
 
             <form 
               onSubmit={handleSubmit}
-              className="space-y-6"
+              className="space-y-4 sm:space-y-6"
             >
               <div
                 data-aos="fade-up"
                 data-aos-delay="100"
-                className="relative group"
+                className="relative group min-w-0"
               >
-                <User className="absolute left-4 top-4 w-5 h-5 text-gray-400 group-focus-within:text-[#6366f1] transition-colors" />
+                <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#6366f1] transition-colors" />
                 <input
                   type="text"
                   name="name"
@@ -170,7 +159,7 @@ const ContactPage = () => {
                   value={formData.name}
                   onChange={handleChange}
                   disabled={isSubmitting}
-                  className="w-full p-4 pl-12 bg-white/10 rounded-xl border border-white/20 placeholder-gray-500 text-white focus:outline-none focus:ring-2 focus:ring-[#6366f1]/30 transition-all duration-300 hover:border-[#6366f1]/30 disabled:opacity-50"
+                  className="w-full p-3 sm:p-4 pl-12 bg-white/10 rounded-xl border border-white/20 placeholder-gray-500 text-white focus:outline-none focus:ring-2 focus:ring-[#6366f1]/30 transition-all duration-300 hover:border-[#6366f1]/30 disabled:opacity-50 text-sm sm:text-base"
                   required
                 />
               </div>
@@ -232,7 +221,7 @@ const ContactPage = () => {
             </div>
             
             {/* Main Container Box */}
-            <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-16 border border-white/20">
+            <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-4 sm:p-8 lg:p-12 border border-white/20 overflow-hidden">
               {/* Email Section - Bigger Rectangle */}
               <div className="mb-8">
                 <a 
@@ -241,23 +230,23 @@ const ContactPage = () => {
                   rel="noopener noreferrer"
                   className="block"
                 >
-                  <div className="bg-white/10 rounded-xl px-4 py-8 hover:bg-white/15 transition-all duration-300 cursor-pointer border border-white/20 hover:border-white/30 group">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-4">
-                        <Mail className="w-8 h-8 text-white transition-colors" />
-                        <div>
-                          <h3 className="text-white font-bold text-xl transition-colors">Email</h3>
-                          <p className="text-white/80 text-sm transition-colors">krishmaheshwari111@gmail.com</p>
+                  <div className="bg-white/10 rounded-xl px-4 py-6 sm:py-8 hover:bg-white/15 transition-all duration-300 cursor-pointer border border-white/20 hover:border-white/30 group">
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+                        <Mail className="w-6 h-6 sm:w-8 sm:h-8 text-white transition-colors shrink-0" />
+                        <div className="min-w-0">
+                          <h3 className="text-white font-bold text-lg sm:text-xl transition-colors truncate">Email</h3>
+                          <p className="text-white/80 text-sm transition-colors break-all">krishmaheshwari111@gmail.com</p>
                         </div>
                       </div>
-                      <ExternalLink className="w-6 h-6 text-white transition-colors" />
+                      <ExternalLink className="w-5 h-5 sm:w-6 sm:h-6 text-white transition-colors shrink-0" />
                     </div>
                   </div>
                 </a>
               </div>
 
               {/* Social Links Grid */}
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 {/* LinkedIn */}
                 <a 
                   href="https://www.linkedin.com/in/krish-maheshwari-2980a5319/" 
@@ -265,12 +254,15 @@ const ContactPage = () => {
                   rel="noopener noreferrer"
                   className="block"
                 >
-                  <div className="bg-white/10 rounded-xl px-3 py-4 hover:bg-[#0077b5]/30 transition-all duration-300 cursor-pointer border border-white/20 hover:border-[#0077b5]/50 group">
-                    <div className="flex items-center gap-3">
-                      <div className="bg-[#0077b5]/20 rounded-lg p-2 group-hover:bg-[#0077b5]/30 transition-all">
+                  <div className="bg-white/10 rounded-xl px-3 py-3 sm:py-4 hover:bg-[#0077b5]/30 transition-all duration-300 cursor-pointer border border-white/20 hover:border-[#0077b5]/50 group">
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div className="bg-[#0077b5]/20 rounded-lg p-2 group-hover:bg-[#0077b5]/30 transition-all shrink-0">
                         <Linkedin className="w-5 h-5 text-[#0077b5] group-hover:text-[#0077b5] transition-colors" />
                       </div>
-                      <span className="text-white font-medium text-base group-hover:text-[#0077b5] transition-colors">LinkedIn</span>
+                      <div className="min-w-0">
+                        <span className="text-white font-medium text-sm sm:text-base group-hover:text-[#0077b5] transition-colors block truncate">LinkedIn</span>
+                        <span className="text-white/60 text-xs hidden sm:block truncate">Connect professionally</span>
+                      </div>
                     </div>
                   </div>
                 </a>
