@@ -6,12 +6,12 @@ import 'aos/dist/aos.css'
 
 // Memoized Components
 const StatusBadge = memo(() => (
-  <div className="inline-block animate-float lg:mx-0 mt-8" data-aos="zoom-in" data-aos-delay="400">
+  <div className="inline-block animate-float lg:mx-0 mt-4 sm:mt-8" data-aos="zoom-in" data-aos-delay="400">
     <div className="relative group">
       <div className="absolute -inset-0.5 bg-gradient-to-r from-[#6366f1] to-[#a855f7] rounded-full blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
       <div className="relative px-3 sm:px-4 py-2 rounded-full bg-black/40 backdrop-blur-xl border border-white/10">
-        <span className="bg-gradient-to-r from-[#6366f1] to-[#a855f7] text-transparent bg-clip-text sm:text-sm text-[0.7rem] font-medium flex items-center tracking-wider">
-          <Sparkles className="sm:w-4 sm:h-4 w-3 h-3 mr-2 text-blue-400" />
+        <span className="bg-gradient-to-r from-[#6366f1] to-[#a855f7] text-transparent bg-clip-text text-xs sm:text-sm font-medium flex items-center tracking-wider whitespace-nowrap">
+          <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-blue-400" />
           BASED IN MUMBAI
         </span>
       </div>
@@ -21,18 +21,19 @@ const StatusBadge = memo(() => (
 
 const MainTitle = memo(() => (
   <div className="space-y-2" data-aos="fade-up" data-aos-delay="600">
-    <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-bold tracking-tight">
+    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold tracking-tight leading-tight">
       <span className="relative inline-block">
         <span className="absolute -inset-2 bg-gradient-to-r from-[#6366f1] to-[#a855f7] blur-2xl opacity-20"></span>
         <span className="relative text-white">
           Student,
         </span>
       </span>
-      <br />
-      <span className="relative inline-block mt-2">
+      <br className="hidden sm:block" />
+      <span className="relative inline-block mt-1 sm:mt-2">
         <span className="absolute -inset-2 bg-gradient-to-r from-[#6366f1] to-[#a855f7] blur-2xl opacity-20"></span>
         <span className="relative bg-gradient-to-r from-[#6366f1] to-[#a855f7] bg-clip-text text-transparent">
-          Manipal University Jaipur
+          Manipal University{" "}
+          <span className="sm:inline block">Jaipur</span>
         </span>
       </span>
     </h1>
@@ -40,7 +41,7 @@ const MainTitle = memo(() => (
 ));
 
 const TechStack = memo(({ tech }) => (
-  <div className="px-4 py-2 hidden sm:block rounded-full bg-white/5 backdrop-blur-sm border border-white/10 text-sm text-gray-300 hover:bg-white/10 transition-colors">
+  <div className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 text-xs sm:text-sm text-gray-300 hover:bg-white/10 transition-colors">
     {tech}
   </div>
 ));
@@ -159,10 +160,10 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#030014] overflow-hidden px-[5%] sm:px-[5%] lg:px-[10%] " id="Home">
+    <div className="min-h-screen bg-[#030014] overflow-hidden px-4 sm:px-[5%] lg:px-[10%]" id="Home">
       <div className={`relative z-10 transition-all duration-1000 ${isLoaded ? "opacity-100" : "opacity-0"}`}>
-        <div className="container mx-auto  min-h-screen ">
-          <div className="flex flex-col lg:flex-row items-center justify-center h-screen md:justify-between gap-0 sm:gap-12 lg:gap-20">
+        <div className="container mx-auto min-h-screen max-w-7xl">
+          <div className="flex flex-col lg:flex-row items-center justify-center min-h-screen md:justify-between gap-6 sm:gap-12 lg:gap-20 py-8 lg:py-0">
             {/* Left Column */}
             <div className="w-full lg:w-1/2 space-y-6 sm:space-y-8 text-left lg:text-left order-1 lg:order-1 lg:mt-0"
               data-aos="fade-right"
@@ -205,7 +206,7 @@ const Home = () => {
                 </div>
 
                 {/* Social Links */}
-                <div className="hidden sm:flex gap-4 justify-start" data-aos="fade-up" data-aos-delay="1600">
+                <div className="flex gap-3 sm:gap-4 justify-start" data-aos="fade-up" data-aos-delay="1600">
                   {SOCIAL_LINKS.map((social, index) => (
                     <SocialLink key={index} {...social} />
                   ))}
@@ -214,7 +215,7 @@ const Home = () => {
             </div>
 
             {/* Right Column - Optimized Lottie Animation */}
-            <div className="w-full py-[10%] sm:py-0 lg:w-1/2 h-auto lg:h-[600px] xl:h-[750px] relative flex items-center justify-center order-2 lg:order-2 mt-8 lg:mt-0"
+            <div className="w-full py-6 sm:py-[10%] lg:py-0 lg:w-1/2 h-[300px] sm:h-auto lg:h-[600px] xl:h-[750px] relative flex items-center justify-center order-2 lg:order-2 mt-4 lg:mt-0"
               onMouseEnter={() => setIsHovering(true)}
               onMouseLeave={() => setIsHovering(false)}
               data-aos="fade-left"
