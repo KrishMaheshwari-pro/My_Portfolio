@@ -478,6 +478,134 @@ export default function FullWidthTabs() {
                   </div>
                 </div>
 
+                {/* Project 5 */}
+                <div
+                  data-aos="fade-up-right"
+                  data-aos-duration="1000"
+                  className="h-full"
+                >
+                  <div className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 border border-gray-700 hover:border-gray-600 h-full">
+                    <h3 className="text-white font-bold text-lg mb-3">
+                      Personal Blog Platform
+                    </h3>
+                    <ul className="text-gray-400 text-sm mb-4 space-y-1">
+                      <li>• A full-stack blog platform with authentication and CRUD ops</li>
+                      <li>• Built with React, Node.js, and MongoDB</li>
+                      <li>• Features: rich-text editor, image uploads, and tagging</li>
+                    </ul>
+                    <div className="flex gap-3 mt-auto">
+                      <a
+                        href="https://github.com/KrishMaheshwari-pro/personal-blog"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors duration-300 text-sm font-medium"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="16 18 22 12 16 6"></polyline>
+                          <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        Source Code
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Project 6 */}
+                <div
+                  data-aos="fade-up"
+                  data-aos-duration="1200"
+                  className="h-full"
+                >
+                  <div className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 border border-gray-700 hover:border-gray-600 h-full">
+                    <h3 className="text-white font-bold text-lg mb-3">
+                      Expense Tracker App
+                    </h3>
+                    <ul className="text-gray-400 text-sm mb-4 space-y-1">
+                      <li>• A cross-platform expense tracker built with React Native</li>
+                      <li>• Syncs data to a Node.js + MongoDB backend</li>
+                      <li>• Supports charts, recurring expenses and export to CSV</li>
+                    </ul>
+                    <div className="flex gap-3 mt-auto">
+                      <a
+                        href="https://github.com/KrishMaheshwari-pro/expense-tracker"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors duration-300 text-sm font-medium"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="16 18 22 12 16 6"></polyline>
+                          <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        Source Code
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Project 7 */}
+                <div
+                  data-aos="fade-up-left"
+                  data-aos-duration="1000"
+                  className="h-full"
+                >
+                  <div className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 border border-gray-700 hover:border-gray-600 h-full">
+                    <h3 className="text-white font-bold text-lg mb-3">
+                      Task Manager (Kanban)
+                    </h3>
+                    <ul className="text-gray-400 text-sm mb-4 space-y-1">
+                      <li>• A Kanban-style task manager built with Vue.js and Firebase</li>
+                      <li>• Real-time collaboration and drag-and-drop interface</li>
+                      <li>• Notifications and user roles support</li>
+                    </ul>
+                    <div className="flex gap-3 mt-auto">
+                      <a
+                        href="https://github.com/KrishMaheshwari-pro/kanban-task-manager"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors duration-300 text-sm font-medium"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="16 18 22 12 16 6"></polyline>
+                          <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        Source Code
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Project 8 */}
+                <div
+                  data-aos="fade-up"
+                  data-aos-duration="1100"
+                  className="h-full"
+                >
+                  <div className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 border border-gray-700 hover:border-gray-600 h-full">
+                    <h3 className="text-white font-bold text-lg mb-3">
+                      Chat App with WebSockets
+                    </h3>
+                    <ul className="text-gray-400 text-sm mb-4 space-y-1">
+                      <li>• A real-time chat application using WebSockets (Socket.io)</li>
+                      <li>• Rooms, typing indicators, and message persistence</li>
+                      <li>• Deployed backend with scaling considerations</li>
+                    </ul>
+                    <div className="flex gap-3 mt-auto">
+                      <a
+                        href="https://github.com/KrishMaheshwari-pro/realtime-chat"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors duration-300 text-sm font-medium"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="16 18 22 12 16 6"></polyline>
+                          <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        Source Code
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
                 {displayedProjects.map((project, index) => (
                   <div
                     key={project.id || index}
