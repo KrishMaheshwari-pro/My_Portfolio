@@ -128,9 +128,9 @@ const ContactPage = () => {
         </p>
       </div>
       <div
-        className="container mx-auto flex items-center justify-center"
+        className="container mx-auto flex items-center justify-center safe-flex"
       >
-        <div className="container px-[1%] grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-[45%_55%] 2xl:grid-cols-[35%_65%] gap-12" >
+        <div className="container px-[1%] grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-[45%_55%] 2xl:grid-cols-[35%_65%] gap-8 break-word" >
           <div
             className="bg-white/5 backdrop-blur-xl rounded-3xl shadow-2xl p-5 py-10 sm:p-10 transform transition-all duration-500 hover:shadow-[#6366f1]/10"
           >
@@ -212,7 +212,7 @@ const ContactPage = () => {
             </form>
           </div>
 
-          <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-3 py-3 md:p-10 md:py-8 shadow-2xl transform transition-all duration-500 hover:shadow-[#6366f1]/10">
+          <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-3 py-3 md:p-8 md:py-6 shadow-2xl transform transition-all duration-500 hover:shadow-[#6366f1]/10 break-word">
             <div className="flex justify-between items-start mb-8">
               <div>
                 <h2 className="text-4xl font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-[#6366f1] to-[#a855f7]">
@@ -224,7 +224,7 @@ const ContactPage = () => {
             </div>
             
             {/* Main Container Box */}
-            <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-16 border border-white/20">
+            <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-8 md:p-16 border border-white/20 break-word">
               {/* Email Section - Bigger Rectangle */}
               <div className="mb-8">
                 <a 

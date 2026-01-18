@@ -185,3 +185,62 @@ body {
 	user-select: none;
 	cursor: default;
   } */
+
+/* Responsive helpers */
+:root{
+	--container-max: 1200px;
+}
+
+/* A lightweight fluid container used when Tailwind container isn't applied */
+.fluid-container{
+	width: 100%;
+	max-width: var(--container-max);
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+/* Make images responsive and prevent overflow */
+img, picture, video {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+/* Safe flex children so long text can break instead of overflowing */
+.safe-flex {
+	min-width: 0; /* allow flex items to shrink */
+	overflow: hidden;
+}
+
+/* Utility to ensure words wrap and don't overflow their boxes */
+.break-word {
+	overflow-wrap: anywhere;
+	word-break: break-word;
+}
+
+/* Fluid paragraph sizing for better mobile scaling */
+.fluid-paragraph {
+	font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+	line-height: 1.45;
+}
+
+/* Small screens adjustments */
+@media (max-width: 767px) {
+	.container, .fluid-container {
+		padding-left: 0.75rem;
+		padding-right: 0.75rem;
+	}
+
+	/* reduce heavy paddings that can cause overflow inside small cards */
+	.p-6 {
+		padding: 1rem !important;
+	}
+}
+
+@media (min-width: 1200px) {
+	:root{
+		--container-max: 1400px;
+	}
+}

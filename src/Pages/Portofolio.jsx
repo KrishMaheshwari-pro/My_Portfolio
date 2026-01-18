@@ -112,12 +112,15 @@ const techStacks = [
   { icon: "python.svg", language: "Python" },
   { icon: "go.svg", language: "GO" },
   { icon: "MongoDB.svg", language: "MongoDB" },
-  { icon: "expresss.svg", language: "Express" },
   { icon: "reactjs.svg", language: "ReactJS" },
   { icon: "nodejs.svg", language: "Node JS" },
   { icon: "sql.svg", language: "SQL" },
   { icon: "ms excel.svg", language: "Excel" },
   { icon: "cloud AWS.svg", language: "Cloud AWS" },
+  { icon: "power-bi-icon.svg", language: "Power BI" },
+  { icon: "icons8-tableau-software.svg", language: "Tableau" },
+  { icon: "icons8-docker.svg", language: "Docker" },
+  { icon: "mysql-logo-svgrepo-com.svg", language: "MySQL" },
 ];
 
 export default function FullWidthTabs() {
@@ -319,16 +322,16 @@ export default function FullWidthTabs() {
                 >
                   <div className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 border border-gray-700 hover:border-gray-600 h-full">
                     <h3 className="text-white font-bold text-lg mb-3">
-                      Diamond-Analysis-Project
+                      STEM QUEST — Gamified Learning Platform
                     </h3>
                     <ul className="text-gray-400 text-sm mb-4 space-y-1">
-                      <li>• Comprehensive analysis to understand factors influencing diamond prices</li>
-                      <li>• Involved data cleaning, exploratory data analysis, and data visualization</li>
-                      <li>• Correlation analysis between diamond prices and features like carat weight, cut, color, and clarity</li>
+                      <li>• A gamified education platform for grades 6-12 to make learning interactive to rural students</li>
+                      <li>• Covers four core subjects - Science, Technology, Engineering, and Mathematics</li>
+                      <li>• Offers quizzes, challenges, and level-based rewards to promote curiosity and concept mastery</li>
                     </ul>
                     <div className="flex gap-3 mt-auto">
                       <a
-                        href="https://github.com/yourusername/diamond-analysis-project"
+                        href="https://github.com/KrishMaheshwari-pro/STEM-QUEST---Gamified-learning-Platform-for-rural-education"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors duration-300 text-sm font-medium"
@@ -340,7 +343,7 @@ export default function FullWidthTabs() {
                         Source Code
                       </a>
                       <a
-                        href="https://diamond-analysis-demo.vercel.app"
+                        href="https://stem-quest-sigma.vercel.app/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md transition-colors duration-300 text-sm font-medium"
@@ -441,7 +444,7 @@ export default function FullWidthTabs() {
                 >
                   <div className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 border border-gray-700 hover:border-gray-600 h-full">
                     <h3 className="text-white font-bold text-lg mb-3">
-                      Online Sudoko Game
+                      Sudoko Game
                     </h3>
                     <ul className="text-gray-400 text-sm mb-4 space-y-1">
                       <li>• A web-based Sudoku game built using HTML, CSS, and JavaScript</li>
@@ -486,16 +489,16 @@ export default function FullWidthTabs() {
                 >
                   <div className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 border border-gray-700 hover:border-gray-600 h-full">
                     <h3 className="text-white font-bold text-lg mb-3">
-                      Personal Blog Platform
+                      LeadConnect - Peer to Peer lending platform
                     </h3>
                     <ul className="text-gray-400 text-sm mb-4 space-y-1">
-                      <li>• A full-stack blog platform with authentication and CRUD ops</li>
-                      <li>• Built with React, Node.js, and MongoDB</li>
-                      <li>• Features: rich-text editor, image uploads, and tagging</li>
+                      <li>• Designed to help individuals avoid high bank interest rates and debt traps by enabling secure, direct lending between users</li>
+                      <li>• Connects verified lenders and borrowers securely, ensuring transparent and fair transactions</li>
+                      <li>• Lenders and borrowers can negotiate terms, track repayments, and maintain trust through detailed transaction records</li>
                     </ul>
                     <div className="flex gap-3 mt-auto">
                       <a
-                        href="https://github.com/KrishMaheshwari-pro/personal-blog"
+                        href="https://github.com/KrishMaheshwari-pro/LendConnect"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors duration-300 text-sm font-medium"
@@ -505,6 +508,19 @@ export default function FullWidthTabs() {
                           <polyline points="8 6 2 12 8 18"></polyline>
                         </svg>
                         Source Code
+                      </a>
+                      <a
+                        href="https://youtu.be/HBSVoDSPkxg?si=CxdSDazKTJIeL47l"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md transition-colors duration-300 text-sm font-medium"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                          <polyline points="15 3 21 3 21 9"></polyline>
+                          <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                        Live Demo
                       </a>
                     </div>
                   </div>
@@ -518,16 +534,16 @@ export default function FullWidthTabs() {
                 >
                   <div className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 border border-gray-700 hover:border-gray-600 h-full">
                     <h3 className="text-white font-bold text-lg mb-3">
-                      Expense Tracker App
+                      Code Master - Gamified learn to code platform
                     </h3>
                     <ul className="text-gray-400 text-sm mb-4 space-y-1">
-                      <li>• A cross-platform expense tracker built with React Native</li>
-                      <li>• Syncs data to a Node.js + MongoDB backend</li>
-                      <li>• Supports charts, recurring expenses and export to CSV</li>
+                      <li>• Helps users write, debug, and auto-complete code snippets across multiple languages using AI-assisted suggestions and error correction</li>
+                      <li>• Covers multiple programming languages with quizzes, progress tracking, and rewards that motivate consistent learning</li>
+                      <li>• Encourages users to practice daily through engaging problem-solving gameplay</li>
                     </ul>
                     <div className="flex gap-3 mt-auto">
                       <a
-                        href="https://github.com/KrishMaheshwari-pro/expense-tracker"
+                        href="https://github.com/KrishMaheshwari-pro/Code-Master"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors duration-300 text-sm font-medium"
@@ -537,6 +553,19 @@ export default function FullWidthTabs() {
                           <polyline points="8 6 2 12 8 18"></polyline>
                         </svg>
                         Source Code
+                      </a>
+                      <a
+                        href="https://youtu.be/Pf0c-Qkvutk?si=o_96DV4YCW6vTwrB"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md transition-colors duration-300 text-sm font-medium"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                          <polyline points="15 3 21 3 21 9"></polyline>
+                          <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                        Live Demo
                       </a>
                     </div>
                   </div>
@@ -550,16 +579,16 @@ export default function FullWidthTabs() {
                 >
                   <div className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 border border-gray-700 hover:border-gray-600 h-full">
                     <h3 className="text-white font-bold text-lg mb-3">
-                      Task Manager (Kanban)
+                      CREDVEDA - AI Powered Credit Risk Assessment Platform
                     </h3>
                     <ul className="text-gray-400 text-sm mb-4 space-y-1">
-                      <li>• A Kanban-style task manager built with Vue.js and Firebase</li>
-                      <li>• Real-time collaboration and drag-and-drop interface</li>
-                      <li>• Notifications and user roles support</li>
+                      <li>• Developed a machine learning-based platform to assess creditworthiness, enabling financial institutions to make informed lending decisions</li>
+                      <li>• Engineered automated data ingestion pipelines to process and analyze financial data efficiently</li>
+                      <li>• Implemented a user-friendly dashboard for visualizing credit scores and financial metrics, enhancing decision-making processes</li>
                     </ul>
                     <div className="flex gap-3 mt-auto">
                       <a
-                        href="https://github.com/KrishMaheshwari-pro/kanban-task-manager"
+                        href="https://github.com/KrishMaheshwari-pro/CREDVEDA"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors duration-300 text-sm font-medium"
@@ -574,7 +603,40 @@ export default function FullWidthTabs() {
                   </div>
                 </div>
 
-                {/* Project 8 */}
+                {/* Project 8 - AIDCHAIN */}
+                <div
+                  data-aos="fade-up"
+                  data-aos-duration="1100"
+                  className="h-full"
+                >
+                  <div className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 border border-gray-700 hover:border-gray-600 h-full">
+                    <h3 className="text-white font-bold text-lg mb-3">
+                      AIDCHAIN - Blockchain-Powered Aid Distribution Platform
+                    </h3>
+                    <ul className="text-gray-400 text-sm mb-4 space-y-1">
+                      <li>• Developed a blockchain-powered transparent donation platform for disaster relief with smart contract-based fund distribution</li>
+                      <li>• Implemented step-by-step fund release mechanism ensuring donors can verify each milestone with real proofs</li>
+                      <li>• Built full-stack solution with Solidity smart contracts, React frontend, and Express/MongoDB backend</li>
+                      <li>• Integrated ETH transaction tracking and NGO verification system for complete trust and transparency</li>
+                    </ul>
+                    <div className="flex gap-3 mt-auto">
+                      <a
+                        href="https://github.com/KrishMaheshwari-pro/AIDCHAIN"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors duration-300 text-sm font-medium"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="16 18 22 12 16 6"></polyline>
+                          <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        Source Code
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Project 8 - Chat App with WebSockets (temporarily commented out)
                 <div
                   data-aos="fade-up"
                   data-aos-duration="1100"
@@ -602,9 +664,23 @@ export default function FullWidthTabs() {
                         </svg>
                         Source Code
                       </a>
+                      <a
+                        href="https://realtime-chat-demo.vercel.app"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md transition-colors duration-300 text-sm font-medium"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                          <polyline points="15 3 21 3 21 9"></polyline>
+                          <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                        Live Demo
+                      </a>
                     </div>
                   </div>
                 </div>
+                */}
 
                 {displayedProjects.map((project, index) => (
                   <div
