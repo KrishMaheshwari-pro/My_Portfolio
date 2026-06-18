@@ -20,6 +20,25 @@ body {
 	scroll-behavior: smooth !important;
 }
 
+/* When Lenis smooth scroll is active it controls scrolling itself, so disable
+   native smooth-scroll to avoid the two fighting (jitter). */
+html.lenis,
+html.lenis body {
+	scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth {
+	scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+	overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+	overflow: hidden;
+}
+
 @keyframes blob {
 	0%,
 	100% {
@@ -185,6 +204,67 @@ body {
 	user-select: none;
 	cursor: default;
   } */
+
+/* Interactive cards.
+   .tilt-card  = gentle 3D tilt for compact/visual cards
+   .glow-card  = lift + shine sweep for text-heavy cards (no rotation) */
+.tilt-card {
+	position: relative;
+	transform-style: preserve-3d;
+	will-change: transform;
+}
+.glow-card {
+	position: relative;
+	overflow: hidden;
+}
+
+/* cursor-following glow (both card types) */
+.tilt-card::after,
+.glow-card::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	background: radial-gradient(
+		240px circle at var(--mx, 50%) var(--my, 50%),
+		rgba(168, 85, 247, 0.18),
+		rgba(99, 102, 241, 0.08) 40%,
+		transparent 65%
+	);
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	pointer-events: none;
+	z-index: 1;
+}
+.tilt-card.tilt-active,
+.glow-card.tilt-active {
+	box-shadow: 0 22px 55px -22px rgba(168, 85, 247, 0.5);
+}
+.tilt-card.tilt-active::after,
+.glow-card.tilt-active::after {
+	opacity: 1;
+}
+
+/* diagonal shine sweep for text-heavy cards */
+.glow-card::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	pointer-events: none;
+	z-index: 2;
+	background: linear-gradient(
+		120deg,
+		transparent 35%,
+		rgba(255, 255, 255, 0.1) 50%,
+		transparent 65%
+	);
+	transform: translateX(-150%);
+	transition: transform 0.9s ease;
+}
+.glow-card.tilt-active::before {
+	transform: translateX(150%);
+}
 
 /* Responsive helpers */
 :root{

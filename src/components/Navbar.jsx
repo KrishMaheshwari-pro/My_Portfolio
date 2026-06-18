@@ -79,7 +79,7 @@ const Navbar = () => {
                 isOpen
                     ? "bg-[#030014]"
                     : scrolled
-                    ? "bg-[#030014]/50 backdrop-blur-xl"
+                    ? "bg-[#030014]/40 backdrop-blur-2xl border-b border-white/10 shadow-lg shadow-purple-500/5"
                     : "bg-transparent"
             }`}
         >
