@@ -322,7 +322,7 @@ export default function FullWidthTabs() {
                   data-aos-duration="1000"
                   className="h-full"
                 >
-                  <div className="glow-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 h-full">
+                  <div className="tilt-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 h-full">
                     <h3 className="text-white font-bold text-lg mb-3">
                       STEM QUEST — Gamified Learning Platform
                     </h3>
@@ -367,7 +367,7 @@ export default function FullWidthTabs() {
                   data-aos-duration="1200"
                   className="h-full"
                 >
-                  <div className="glow-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 h-full">
+                  <div className="tilt-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 h-full">
                     <h3 className="text-white font-bold text-lg mb-3">
                     Multiple Excel Scraper
                     </h3>
@@ -399,7 +399,7 @@ export default function FullWidthTabs() {
                   data-aos-duration="1000"
                   className="h-full"
                 >
-                  <div className="glow-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 h-full">
+                  <div className="tilt-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 h-full">
                     <h3 className="text-white font-bold text-lg mb-3">
                       E-Casino Suite
                     </h3>
@@ -444,7 +444,7 @@ export default function FullWidthTabs() {
                   data-aos-duration="1100"
                   className="h-full"
                 >
-                  <div className="glow-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 h-full">
+                  <div className="tilt-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 h-full">
                     <h3 className="text-white font-bold text-lg mb-3">
                       Sudoko Game
                     </h3>
@@ -489,7 +489,7 @@ export default function FullWidthTabs() {
                   data-aos-duration="1000"
                   className="h-full"
                 >
-                  <div className="glow-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 h-full">
+                  <div className="tilt-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 h-full">
                     <h3 className="text-white font-bold text-lg mb-3">
                       LeadConnect - Peer to Peer lending platform
                     </h3>
@@ -534,7 +534,7 @@ export default function FullWidthTabs() {
                   data-aos-duration="1200"
                   className="h-full"
                 >
-                  <div className="glow-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 h-full">
+                  <div className="tilt-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 h-full">
                     <h3 className="text-white font-bold text-lg mb-3">
                       Code Master - Gamified learn to code platform
                     </h3>
@@ -579,7 +579,7 @@ export default function FullWidthTabs() {
                   data-aos-duration="1000"
                   className="h-full"
                 >
-                  <div className="glow-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 h-full">
+                  <div className="tilt-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 h-full">
                     <h3 className="text-white font-bold text-lg mb-3">
                       CREDVEDA - AI Powered Credit Risk Assessment Platform
                     </h3>
@@ -611,7 +611,7 @@ export default function FullWidthTabs() {
                   data-aos-duration="1100"
                   className="h-full"
                 >
-                  <div className="glow-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 h-full">
+                  <div className="tilt-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 h-full">
                     <h3 className="text-white font-bold text-lg mb-3">
                       AIDCHAIN - Blockchain-Powered Aid Distribution Platform
                     </h3>
@@ -644,7 +644,7 @@ export default function FullWidthTabs() {
                   data-aos-duration="1100"
                   className="h-full"
                 >
-                  <div className="glow-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 h-full">
+                  <div className="tilt-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 h-full">
                     <h3 className="text-white font-bold text-lg mb-3">
                       Chat App with WebSockets
                     </h3>

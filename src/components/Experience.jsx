@@ -18,7 +18,7 @@ const Experience = () => {
         <div className="space-y-8">
           {/* Altus Corp Experience */}
           <div className="group" data-aos="fade-up">
-            <div className="glow-card p-6 rounded-2xl bg-[#0c0621] border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300">
+            <div className="tilt-card p-6 rounded-2xl bg-[#0c0621] border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300">
               <div className="flex justify-between items-start mb-4">
                 <div className="flex items-center gap-4">
                   {/* Company Logo */}
@@ -101,7 +101,7 @@ const Experience = () => {
 
           {/* Finalyca Experience */}
           <div className="group" data-aos="fade-up">
-            <div className="glow-card p-6 rounded-2xl bg-[#0c0621] border border-green-500/20 hover:border-green-500/40 transition-all duration-300">
+            <div className="tilt-card p-6 rounded-2xl bg-[#0c0621] border border-green-500/20 hover:border-green-500/40 transition-all duration-300">
               <div className="flex justify-between items-start mb-4">
                 <div className="flex items-center gap-4">
                                      {/* Company Logo */}
@@ -184,7 +184,7 @@ const Experience = () => {
 
           {/* Miso Experience */}
           <div className="group" data-aos="fade-up">
-            <div className="glow-card p-6 rounded-2xl bg-[#0c0621] border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300">
+            <div className="tilt-card p-6 rounded-2xl bg-[#0c0621] border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300">
               <div className="flex justify-between items-start mb-4">
                 <div className="flex items-center gap-4">
                                      {/* Company Logo */}
