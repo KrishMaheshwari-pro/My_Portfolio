@@ -18,47 +18,9 @@ import Reveal from "./components/Reveal";
 import useTilt from "./hooks/useTilt";
 import ScrollProgress from "./components/ScrollProgress";
 import ScrollToTop from "./components/ScrollToTop";
-import Lenis from "lenis";
-
-// Smooth inertia scrolling (Lenis) + smooth anchor navigation for the in-page
-// nav links. Disabled entirely when the user prefers reduced motion.
-const useSmoothScroll = () => {
-  useEffect(() => {
-    const prefersReduced = window.matchMedia?.(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    if (prefersReduced) return;
-
-    const lenis = new Lenis({ duration: 1.1, smoothWheel: true });
-    window.__lenis = lenis;
-    let rafId;
-    const raf = (time) => {
-      lenis.raf(time);
-      rafId = requestAnimationFrame(raf);
-    };
-    rafId = requestAnimationFrame(raf);
-
-    const onAnchorClick = (e) => {
-      const link = e.target.closest('a[href^="#"]');
-      if (!link) return;
-      const hash = link.getAttribute("href");
-      if (!hash || hash.length < 2) return;
-      const target = document.querySelector(hash);
-      if (target) {
-        e.preventDefault();
-        lenis.scrollTo(target, { offset: -80 });
-      }
-    };
-    document.addEventListener("click", onAnchorClick);
-
-    return () => {
-      document.removeEventListener("click", onAnchorClick);
-      cancelAnimationFrame(rafId);
-      lenis.destroy();
-      delete window.__lenis;
-    };
-  }, []);
-};
+import GrainOverlay from "./components/GrainOverlay";
+import StatsBand from "./components/StatsBand";
+import CursorTrail from "./components/CursorTrail";
 
 const LandingPage = ({ showWelcome, setShowWelcome }) => {
   return (
@@ -72,10 +34,13 @@ const LandingPage = ({ showWelcome, setShowWelcome }) => {
       {!showWelcome && (
         <>
           <ScrollProgress />
+          <GrainOverlay />
+          <CursorTrail />
           <Navbar />
           <AnimatedBackground />
           <Home />
           <Reveal><About /></Reveal>
+          <Reveal><StatsBand /></Reveal>
           <Reveal><Education /></Reveal>
           <Reveal><Experience /></Reveal>
           <Reveal><Portofolio /></Reveal>
@@ -119,7 +84,6 @@ const ProjectPageLayout = () => (
 
 function App() {
   const [showWelcome, setShowWelcome] = useState(true);
-  useSmoothScroll();
   useTilt();
 
   return (

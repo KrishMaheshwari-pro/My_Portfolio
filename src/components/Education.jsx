@@ -7,7 +7,7 @@ const Education = () => {
         {/* Section Title */}
         <div className="text-center mb-16" data-aos="fade-up">
           <h2 className="text-4xl md:text-5xl font-bold">
-            <span className="bg-gradient-to-r from-[#6366f1] to-[#a855f7] bg-clip-text text-transparent">
+            <span className="shimmer-text">
               Education
             </span>
           </h2>
@@ -18,7 +18,7 @@ const Education = () => {
               <div className="group" data-aos="fade-up">
                 <div className="tilt-card p-6 rounded-2xl bg-[#0c0621] border border-blue-500/20 hover:border-blue-500/40 transition-colors">
                   <div className="flex justify-between items-center mb-3">
-                    <div className="text-2xl font-bold text-white/90">Manipal University Jaipur</div>
+                    <div className="text-xl sm:text-2xl font-bold text-white/90">Manipal University Jaipur</div>
                     <time className="inline-flex items-center justify-center text-xs font-semibold uppercase w-24 h-6 text-blue-400 bg-blue-400/10 rounded-full">
                       2023 - 2027
                     </time>
@@ -40,7 +40,7 @@ const Education = () => {
               <div className="group" data-aos="fade-up">
                 <div className="tilt-card p-6 rounded-2xl bg-[#0c0621] border border-green-500/20 hover:border-green-500/40 transition-colors">
                   <div className="flex justify-between items-center mb-3">
-                    <div className="text-2xl font-bold text-white/90">KC College</div>
+                    <div className="text-xl sm:text-2xl font-bold text-white/90">KC College</div>
                     <time className="inline-flex items-center justify-center text-xs font-semibold uppercase w-24 h-6 text-green-400 bg-green-400/10 rounded-full">
                       2021 - 2023
                     </time>
@@ -62,7 +62,7 @@ const Education = () => {
               <div className="group" data-aos="fade-up">
                 <div className="tilt-card p-6 rounded-2xl bg-[#0c0621] border border-purple-500/20 hover:border-purple-500/40 transition-colors">
                   <div className="flex justify-between items-center mb-3">
-                    <div className="text-2xl font-bold text-white/90">Gopi Birla Memorial School</div>
+                    <div className="text-xl sm:text-2xl font-bold text-white/90">Gopi Birla Memorial School</div>
                     <time className="inline-flex items-center justify-center text-xs font-semibold w-24 h-6 text-purple-400 bg-purple-400/10 rounded-full">
                       upto 2021
                     </time>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
 
 // Glassy floating button that appears after scrolling down and smoothly
-// returns to the top (uses the Lenis instance if present).
+// returns to the top using native smooth scroll.
 export default function ScrollToTop() {
   const [show, setShow] = useState(false);
 
@@ -14,8 +14,7 @@ export default function ScrollToTop() {
   }, []);
 
   const toTop = () => {
-    if (window.__lenis) window.__lenis.scrollTo(0);
-    else window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (

@@ -8,7 +8,7 @@ const Experience = () => {
         {/* Section Title */}
         <div className="text-center mb-16" data-aos="fade-up">
           <h2 className="text-4xl md:text-5xl font-bold">
-            <span className="bg-gradient-to-r from-[#6366f1] to-[#a855f7] bg-clip-text text-transparent">
+            <span className="shimmer-text">
               Experience
             </span>
           </h2>
@@ -18,7 +18,7 @@ const Experience = () => {
         <div className="space-y-8">
           {/* Altus Corp Experience */}
           <div className="group" data-aos="fade-up">
-            <div className="tilt-card p-6 rounded-2xl bg-[#0c0621] border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300">
+            <div className="tilt-card tilt-soft p-6 rounded-2xl bg-[#0c0621] border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300">
               <div className="flex justify-between items-start mb-4">
                 <div className="flex items-center gap-4">
                   {/* Company Logo */}
@@ -28,16 +28,16 @@ const Experience = () => {
                     rel="noopener noreferrer"
                     className="w-14 h-14 rounded-lg bg-white flex items-center justify-center shadow-lg p-0.5 overflow-hidden hover:scale-105 transition-transform"
                   >
-                    <img src="/altus-corp.jpeg" alt="Altus Corp" className="max-w-full max-h-full object-contain" />
+                    <img src="/altus-corp.png" alt="Altus Corp" className="max-w-full max-h-full object-contain" />
                   </a>
 
                   <div>
-                    <h3 className="text-2xl font-bold text-purple-300">Full-Stack Developer Intern (App &amp; Web)</h3>
+                    <h3 className="text-xl sm:text-2xl font-bold text-purple-300">Full-Stack Developer Intern (App &amp; Web)</h3>
                     <p className="text-purple-300/90 font-medium">Altus Corp</p>
                   </div>
                 </div>
 
-                <p className="text-gray-400 text-sm text-right shrink-0 ml-3">Mumbai · June 2025 - Present</p>
+                <p className="text-gray-400 text-xs sm:text-sm text-right shrink-0 ml-3">Mumbai · June 2025 - Present</p>
               </div>
 
               <div className="mb-4 flex items-center gap-2">
@@ -101,7 +101,7 @@ const Experience = () => {
 
           {/* Finalyca Experience */}
           <div className="group" data-aos="fade-up">
-            <div className="tilt-card p-6 rounded-2xl bg-[#0c0621] border border-green-500/20 hover:border-green-500/40 transition-all duration-300">
+            <div className="tilt-card tilt-soft p-6 rounded-2xl bg-[#0c0621] border border-green-500/20 hover:border-green-500/40 transition-all duration-300">
               <div className="flex justify-between items-start mb-4">
                 <div className="flex items-center gap-4">
                                      {/* Company Logo */}
@@ -114,12 +114,12 @@ const Experience = () => {
                    </div>
                   
                   <div>
-                    <h3 className="text-2xl font-bold text-green-400">Software Development Intern</h3>
+                    <h3 className="text-xl sm:text-2xl font-bold text-green-400">Software Development Intern</h3>
                     <p className="text-green-300 font-medium">Finalyca</p>
                   </div>
                 </div>
                 
-                <p className="text-gray-400 text-sm text-right shrink-0 ml-3">Mumbai · June 2025 - July 2025</p>
+                <p className="text-gray-400 text-xs sm:text-sm text-right shrink-0 ml-3">Mumbai · June 2025 - July 2025</p>
               </div>
 
               <div className="mb-4 flex items-center gap-2">
@@ -184,7 +184,7 @@ const Experience = () => {
 
           {/* Miso Experience */}
           <div className="group" data-aos="fade-up">
-            <div className="tilt-card p-6 rounded-2xl bg-[#0c0621] border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300">
+            <div className="tilt-card tilt-soft p-6 rounded-2xl bg-[#0c0621] border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300">
               <div className="flex justify-between items-start mb-4">
                 <div className="flex items-center gap-4">
                                      {/* Company Logo */}
@@ -197,12 +197,12 @@ const Experience = () => {
                    </div>
                   
                   <div>
-                    <h3 className="text-2xl font-bold text-white">Web Development Intern</h3>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white">Web Development Intern</h3>
                     <p className="text-blue-300 font-medium">Miso</p>
                   </div>
                 </div>
                 
-                <p className="text-gray-400 text-sm text-right shrink-0 ml-3">Remote · August 2024 - October 2024</p>
+                <p className="text-gray-400 text-xs sm:text-sm text-right shrink-0 ml-3">Remote · August 2024 - October 2024</p>
               </div>
 
               <div className="mb-4 flex items-center gap-2">

@@ -7,7 +7,7 @@ import { useEffect } from "react";
 //                  (text-heavy cards like Experience/Education/Projects, so
 //                   the content stays perfectly readable)
 // Disabled for prefers-reduced-motion and touch (pointer: coarse) devices.
-const MAX_TILT = 6; // degrees
+const MAX_TILT = 4.5; // degrees
 
 export default function useTilt() {
   useEffect(() => {
@@ -62,11 +62,16 @@ export default function useTilt() {
         // text-heavy card: just a clean lift, no rotation
         card.style.transform = "translateY(-6px)";
       } else {
-        const rx = (0.5 - py) * 2 * MAX_TILT;
-        const ry = (px - 0.5) * 2 * MAX_TILT;
+        // .tilt-soft = gentler movement for big text-heavy cards so it never
+        // hinders reading.
+        const soft = card.classList.contains("tilt-soft");
+        const max = soft ? 2.5 : MAX_TILT;
+        const scale = soft ? 1.01 : 1.02;
+        const rx = (0.5 - py) * 2 * max;
+        const ry = (px - 0.5) * 2 * max;
         card.style.transform = `perspective(900px) rotateX(${rx.toFixed(
           2
-        )}deg) rotateY(${ry.toFixed(2)}deg) scale(1.02)`;
+        )}deg) rotateY(${ry.toFixed(2)}deg) scale(${scale})`;
       }
     };
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, memo } from "react"
-import { Github, Linkedin, Mail, ExternalLink, Instagram, Sparkles } from "lucide-react"
+import { Github, Linkedin, Mail, ExternalLink, Instagram, Sparkles, ChevronDown } from "lucide-react"
 import { DotLottieReact } from '@lottiefiles/dotlottie-react'
+import Magnetic from "../components/Magnetic"
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
@@ -9,9 +10,9 @@ const StatusBadge = memo(() => (
   <div className="inline-block animate-float lg:mx-0 mt-8" data-aos="zoom-in" data-aos-delay="400">
     <div className="relative group">
       <div className="absolute -inset-0.5 bg-gradient-to-r from-[#6366f1] to-[#a855f7] rounded-full blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
-      <div className="relative px-3 sm:px-4 py-2 rounded-full bg-black/40 backdrop-blur-xl border border-white/10">
-        <span className="bg-gradient-to-r from-[#6366f1] to-[#a855f7] text-transparent bg-clip-text sm:text-sm text-[0.7rem] font-medium flex items-center tracking-wider">
-          <Sparkles className="sm:w-4 sm:h-4 w-3 h-3 mr-2 text-blue-400" />
+      <div className="relative px-2.5 sm:px-3 py-1 rounded-full bg-black/40 backdrop-blur-xl border border-white/10">
+        <span className="bg-gradient-to-r from-[#6366f1] to-[#a855f7] text-transparent bg-clip-text text-[0.6rem] sm:text-xs font-medium flex items-center tracking-wider">
+          <Sparkles className="w-2.5 h-2.5 sm:w-3 sm:h-3 mr-1.5 text-blue-400" />
           BASED IN MUMBAI
         </span>
       </div>
@@ -47,7 +48,7 @@ const TechStack = memo(({ tech }) => (
 
 const CTAButton = memo(({ href, text, icon: Icon }) => (
   <a href={href}>
-    <button className="group relative w-[160px]">
+    <button className="group relative w-[140px] sm:w-[160px]">
       <div className="absolute -inset-0.5 bg-gradient-to-r from-[#4f52c9] to-[#8644c5] rounded-xl opacity-50 blur-md group-hover:opacity-90 transition-all duration-700"></div>
       <div className="relative h-11 bg-[#030014] backdrop-blur-xl rounded-lg border border-white/10 leading-none overflow-hidden">
         <div className="absolute inset-0 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 bg-gradient-to-r from-[#4f52c9]/20 to-[#8644c5]/20"></div>
@@ -67,7 +68,7 @@ const SocialLink = memo(({ icon: Icon, link }) => (
     <button className="group relative p-3">
       <div className="absolute inset-0 bg-gradient-to-r from-[#6366f1] to-[#a855f7] rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-300"></div>
       <div className="relative rounded-xl bg-black/50 backdrop-blur-xl p-2 flex items-center justify-center border border-white/10 group-hover:border-white/20 transition-all duration-300">
-        <Icon className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
+        <Icon className="w-[1.4rem] h-[1.4rem] text-gray-400 group-hover:text-white transition-colors" />
       </div>
     </button>
   </a>
@@ -77,7 +78,7 @@ const SocialLink = memo(({ icon: Icon, link }) => (
 const TYPING_SPEED = 100;
 const ERASING_SPEED = 50;
 const PAUSE_DURATION = 2000;
-const WORDS = ["Computer Science Engineer", "Data Science and AIML Enthusiast"];
+const WORDS = ["Computer Science Engineer", "Data Science and AIML Enthusiast", "Full Stack Developer"];
 const TECH_STACK = ["AI ML", "Fullstack", "Data Science", "Analyst"];
 const SOCIAL_LINKS = [
   { icon: Github, link: "https://github.com/KrishMaheshwari-pro" },
@@ -143,6 +144,12 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-[#030014] overflow-hidden px-[5%] sm:px-[5%] lg:px-[10%] " id="Home">
+      {/* Aurora glow background */}
+      <div aria-hidden="true" className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="aurora-1 absolute -top-32 -left-24 w-[38rem] h-[38rem] rounded-full bg-indigo-600/20 blur-[90px]" />
+        <div className="aurora-2 absolute top-1/4 -right-24 w-[34rem] h-[34rem] rounded-full bg-purple-600/20 blur-[90px]" />
+        <div className="aurora-3 absolute -bottom-32 left-1/4 w-[30rem] h-[30rem] rounded-full bg-fuchsia-600/10 blur-[90px]" />
+      </div>
       <div className={`relative z-10 transition-all duration-1000 ${isLoaded ? "opacity-100" : "opacity-0"}`}>
         <div className="container mx-auto min-h-screen safe-flex">
           <div className="flex flex-col lg:flex-row items-center justify-center h-screen md:justify-between gap-4 sm:gap-12 lg:gap-20">
@@ -166,7 +173,7 @@ const Home = () => {
                 <div className="mt-8 inline-block" data-aos="fade-up" data-aos-delay="1000">
                   <div className="relative group">
                     <div className="absolute -inset-0.5 bg-gradient-to-r from-[#6366f1] to-[#a855f7] rounded-2xl blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
-                    <div className="relative px-5 sm:px-7 py-4 rounded-2xl bg-[#0c0621] border border-indigo-500/20">
+                    <div className="tilt-card tilt-soft cursor-default [&_*]:cursor-default relative px-5 sm:px-7 py-4 rounded-2xl bg-[#0c0621] border border-indigo-500/20">
                       <p className="text-sm md:text-base text-gray-300 font-medium italic break-word fluid-paragraph">
                         "Leveraging AI as a professional tool, not a replacement."
                       </p>
@@ -183,8 +190,8 @@ const Home = () => {
 
                 {/* CTA Buttons */}
                 <div className="flex flex-row gap-3 w-full justify-start" data-aos="fade-up" data-aos-delay="1400">
-                  <CTAButton href="#Portofolio" text="Projects" icon={ExternalLink} />
-                  <CTAButton href="#Contact" text="Contact" icon={Mail} />
+                  <Magnetic><CTAButton href="#Portofolio" text="Projects" icon={ExternalLink} /></Magnetic>
+                  <Magnetic><CTAButton href="#Contact" text="Contact" icon={Mail} /></Magnetic>
                 </div>
 
                 {/* Social Links */}
@@ -237,6 +244,15 @@ const Home = () => {
             </div>
           </div>
         </div>
+
+        {/* Scroll to explore hint */}
+        <a
+          href="#About"
+          className="hidden sm:flex absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex-col items-center gap-1 text-gray-500 hover:text-gray-300 transition-colors"
+          aria-label="Scroll to About"
+        >
+          <ChevronDown className="w-5 h-5 animate-bounce" />
+        </a>
       </div>
     </div>
   );

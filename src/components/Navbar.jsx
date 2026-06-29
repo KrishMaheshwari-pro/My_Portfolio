@@ -23,7 +23,9 @@ const Navbar = () => {
                 if (section) {
                     return {
                         id: item.href.replace("#", ""),
-                        offset: section.offsetTop - 200, // Adjusted offset for better detection
+                        // getBoundingClientRect + scrollY is immune to transformed
+                        // ancestors (the Reveal animation wrapper); offsetTop is not.
+                        offset: section.getBoundingClientRect().top + window.scrollY - 200,
                         height: section.offsetHeight
                     };
                 }
@@ -59,12 +61,13 @@ const Navbar = () => {
         const section = document.querySelector(href);
         if (section) {
             const navbarHeight = 64; // h-16 = 64px
-            const sectionTop = section.offsetTop;
-            
-            // Always scroll to show the section header at the very top
-            // Reduce navbar height offset to bring header even closer to top
-            const scrollPosition = sectionTop - navbarHeight - 20;
-            
+
+            // Use the section's viewport-relative top + current scroll position.
+            // This stays correct even when the section sits inside a transformed
+            // ancestor (the Reveal animation wrapper), where offsetTop returns ~0.
+            const scrollPosition =
+              section.getBoundingClientRect().top + window.scrollY - navbarHeight - 20;
+
             window.scrollTo({
                 top: Math.max(0, scrollPosition),
                 behavior: "smooth"
@@ -79,7 +82,7 @@ const Navbar = () => {
                 isOpen
                     ? "bg-[#030014]"
                     : scrolled
-                    ? "bg-[#030014]/40 backdrop-blur-2xl border-b border-white/10 shadow-lg shadow-purple-500/5"
+                    ? "bg-[#030014]/50 backdrop-blur-xl"
                     : "bg-transparent"
             }`}
         >

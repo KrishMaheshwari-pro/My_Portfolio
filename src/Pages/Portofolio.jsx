@@ -204,7 +204,7 @@ export default function FullWidthTabs() {
     <div className="bg-[#030014] py-8 px-[5%] sm:px-[5%] lg:px-[10%] overflow-hidden" id="Portofolio">
       {/* Header section - unchanged */}
       <div className="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
-        <h2 className="inline-block text-3xl md:text-5xl font-bold text-center mx-auto text-transparent bg-clip-text bg-gradient-to-r from-[#6366f1] to-[#a855f7]">
+        <h2 className="inline-block text-3xl md:text-5xl font-bold text-center mx-auto shimmer-text">
           <span style={{
             color: '#6366f1',
             backgroundImage: 'linear-gradient(45deg, #6366f1 10%, #a855f7 93%)',
@@ -322,7 +322,7 @@ export default function FullWidthTabs() {
                   data-aos-duration="1000"
                   className="h-full"
                 >
-                  <div className="tilt-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 h-full">
+                  <div className="tilt-card bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 border border-gray-700 hover:border-gray-600 h-full">
                     <h3 className="text-white font-bold text-lg mb-3">
                       STEM QUEST — Gamified Learning Platform
                     </h3>
@@ -367,7 +367,7 @@ export default function FullWidthTabs() {
                   data-aos-duration="1200"
                   className="h-full"
                 >
-                  <div className="tilt-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 h-full">
+                  <div className="tilt-card bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 border border-gray-700 hover:border-gray-600 h-full">
                     <h3 className="text-white font-bold text-lg mb-3">
                     Multiple Excel Scraper
                     </h3>
@@ -399,7 +399,7 @@ export default function FullWidthTabs() {
                   data-aos-duration="1000"
                   className="h-full"
                 >
-                  <div className="tilt-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 h-full">
+                  <div className="tilt-card bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 border border-gray-700 hover:border-gray-600 h-full">
                     <h3 className="text-white font-bold text-lg mb-3">
                       E-Casino Suite
                     </h3>
@@ -444,7 +444,7 @@ export default function FullWidthTabs() {
                   data-aos-duration="1100"
                   className="h-full"
                 >
-                  <div className="tilt-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 h-full">
+                  <div className="tilt-card bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 border border-gray-700 hover:border-gray-600 h-full">
                     <h3 className="text-white font-bold text-lg mb-3">
                       Sudoko Game
                     </h3>
@@ -489,7 +489,7 @@ export default function FullWidthTabs() {
                   data-aos-duration="1000"
                   className="h-full"
                 >
-                  <div className="tilt-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 h-full">
+                  <div className="tilt-card bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 border border-gray-700 hover:border-gray-600 h-full">
                     <h3 className="text-white font-bold text-lg mb-3">
                       LeadConnect - Peer to Peer lending platform
                     </h3>
@@ -534,7 +534,7 @@ export default function FullWidthTabs() {
                   data-aos-duration="1200"
                   className="h-full"
                 >
-                  <div className="tilt-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 h-full">
+                  <div className="tilt-card bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 border border-gray-700 hover:border-gray-600 h-full">
                     <h3 className="text-white font-bold text-lg mb-3">
                       Code Master - Gamified learn to code platform
                     </h3>
@@ -579,7 +579,7 @@ export default function FullWidthTabs() {
                   data-aos-duration="1000"
                   className="h-full"
                 >
-                  <div className="tilt-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 h-full">
+                  <div className="tilt-card bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 border border-gray-700 hover:border-gray-600 h-full">
                     <h3 className="text-white font-bold text-lg mb-3">
                       CREDVEDA - AI Powered Credit Risk Assessment Platform
                     </h3>
@@ -611,7 +611,7 @@ export default function FullWidthTabs() {
                   data-aos-duration="1100"
                   className="h-full"
                 >
-                  <div className="tilt-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 h-full">
+                  <div className="tilt-card bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 border border-gray-700 hover:border-gray-600 h-full">
                     <h3 className="text-white font-bold text-lg mb-3">
                       AIDCHAIN - Blockchain-Powered Aid Distribution Platform
                     </h3>
@@ -644,7 +644,7 @@ export default function FullWidthTabs() {
                   data-aos-duration="1100"
                   className="h-full"
                 >
-                  <div className="tilt-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 h-full">
+                  <div className="tilt-card bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 border border-gray-700 hover:border-gray-600 h-full">
                     <h3 className="text-white font-bold text-lg mb-3">
                       Chat App with WebSockets
                     </h3>
@@ -719,7 +719,7 @@ export default function FullWidthTabs() {
                    data-aos="fade-up-right"
                    data-aos-duration="1000"
                  >
-                   <div className="tilt-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 cursor-pointer border border-white/10 hover:border-white/20">
+                   <div className="tilt-card bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
                      <a 
                        href="" 
                        target="_blank" 
@@ -748,7 +748,7 @@ export default function FullWidthTabs() {
                    data-aos="fade-up"
                    data-aos-duration="1200"
                  >
-                   <div className="tilt-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 cursor-pointer border border-white/10 hover:border-white/20">
+                   <div className="tilt-card bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
                      <a 
                        href="#" 
                        target="_blank" 
@@ -776,7 +776,7 @@ export default function FullWidthTabs() {
                    data-aos="fade-up-left"
                    data-aos-duration="1000"
                  >
-                   <div className="tilt-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 cursor-pointer border border-white/10 hover:border-white/20">
+                   <div className="tilt-card bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
                      <a 
                        href="#" 
                        target="_blank" 
@@ -804,7 +804,7 @@ export default function FullWidthTabs() {
                    data-aos="fade-up"
                    data-aos-duration="1100"
                  >
-                   <div className="tilt-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 cursor-pointer border border-white/10 hover:border-white/20">
+                   <div className="tilt-card bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
                      <a 
                        href="#" 
                        target="_blank" 
@@ -832,7 +832,7 @@ export default function FullWidthTabs() {
                    data-aos="fade-up-right"
                    data-aos-duration="1000"
                  >
-                   <div className="tilt-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 cursor-pointer border border-white/10 hover:border-white/20">
+                   <div className="tilt-card bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
                      <a 
                        href="#" 
                        target="_blank" 
@@ -860,7 +860,7 @@ export default function FullWidthTabs() {
                    data-aos="fade-up"
                    data-aos-duration="1200"
                  >
-                   <div className="tilt-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 cursor-pointer border border-white/10 hover:border-white/20">
+                   <div className="tilt-card bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
                      <a 
                        href="#" 
                        target="_blank" 
@@ -888,7 +888,7 @@ export default function FullWidthTabs() {
                    data-aos="fade-up-left"
                    data-aos-duration="1000"
                  >
-                   <div className="tilt-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 cursor-pointer border border-white/10 hover:border-white/20">
+                   <div className="tilt-card bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
                      <a 
                        href="#" 
                        target="_blank" 
@@ -916,7 +916,7 @@ export default function FullWidthTabs() {
                    data-aos="fade-up"
                    data-aos-duration="1100"
                  >
-                   <div className="tilt-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 cursor-pointer border border-white/10 hover:border-white/20">
+                   <div className="tilt-card bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
                      <a 
                        href="#" 
                        target="_blank" 
@@ -943,7 +943,7 @@ export default function FullWidthTabs() {
                    data-aos="fade-up-right"
                    data-aos-duration="1000"
                  >
-                   <div className="tilt-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 cursor-pointer border border-white/10 hover:border-white/20">
+                   <div className="tilt-card bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
                      <a 
                        href="#" 
                        target="_blank" 
@@ -970,7 +970,7 @@ export default function FullWidthTabs() {
                    data-aos="fade-up"
                    data-aos-duration="1200"
                  >
-                   <div className="tilt-card bg-white/5 backdrop-blur-md rounded-lg p-6 hover:bg-white/10 transition-all duration-300 cursor-pointer border border-white/10 hover:border-white/20">
+                   <div className="tilt-card bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-600">
                      <a 
                        href="#" 
                        target="_blank" 
