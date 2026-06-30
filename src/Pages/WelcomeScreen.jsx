@@ -6,10 +6,13 @@ import 'aos/dist/aos.css';
 
 // Two-stage intro:
 //   1) animated "Welcome To My Portfolio" text (the original splash)
-//   2) the video, shown in a centered, properly-sized frame (NOT full-screen —
-//      a contained video stays crisp/HD instead of being upscaled into blur)
+//   2) the video, shown in a centered, properly-sized frame
 // then the whole panel slides down like a curtain to reveal the site beneath.
-const TEXT_MS = 4500;     // how long the text splash holds before the video
+//
+// The <video> is mounted from the very start (hidden behind the text) so it
+// PRELOADS during the splash and plays instantly when revealed — no black
+// "loading" box / buffering gap between the text and the video.
+const TEXT_MS = 4500;       // how long the text splash holds before the video
 const VIDEO_MAX_MS = 14000; // safety net so a stalled video never traps anyone
 
 const TypewriterEffect = ({ text }) => {
@@ -54,7 +57,7 @@ const IconButton = ({ Icon }) => (
 const TextIntro = () => (
   <motion.div
     key="text"
-    className="relative min-h-screen w-full flex items-center justify-center px-4"
+    className="absolute inset-0 z-10 flex items-center justify-center px-4"
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     exit={{ opacity: 0, y: -30, filter: 'blur(8px)' }}
@@ -98,60 +101,10 @@ const TextIntro = () => (
   </motion.div>
 );
 
-// ── Stage 2: framed video ────────────────────────────────────────────────────
-const VideoIntro = ({ onDone }) => {
-  const videoRef = useRef(null);
-  const [muted, setMuted] = useState(true);
-
-  const toggleMute = (e) => {
-    e.stopPropagation();
-    const v = videoRef.current;
-    if (!v) return;
-    v.muted = !v.muted;
-    setMuted(v.muted);
-  };
-
-  return (
-    <motion.div
-      key="video"
-      className="relative min-h-screen w-full flex flex-col items-center justify-center px-4"
-      initial={{ opacity: 0, scale: 0.96 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.6, ease: 'easeInOut' }}
-    >
-      <div className="relative w-[94%] max-w-5xl">
-        {/* themed glow behind the frame */}
-        <div className="absolute -inset-4 bg-gradient-to-r from-indigo-600/30 to-purple-600/30 blur-3xl rounded-[2rem]" />
-
-        <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-purple-900/40 bg-black">
-          <video
-            ref={videoRef}
-            src="/intro.mp4"
-            className="w-full h-auto block"
-            autoPlay
-            muted={muted}
-            playsInline
-            preload="auto"
-            onEnded={onDone}
-            onError={onDone}
-          />
-
-          {/* mute / unmute, tucked in the corner of the frame */}
-          <button
-            onClick={toggleMute}
-            aria-label={muted ? 'Unmute' : 'Mute'}
-            className="absolute top-3 right-3 z-10 p-2.5 rounded-full bg-black/40 backdrop-blur-md border border-white/15 text-white/90 hover:bg-black/60 hover:scale-105 transition-all duration-300"
-          >
-            {muted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-          </button>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
 const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
   const [phase, setPhase] = useState(startPhase); // 'text' → 'video'
+  const [muted, setMuted] = useState(true);
+  const videoRef = useRef(null);
   const finished = useRef(false);
 
   // Drop the welcome flag. App's AnimatePresence then plays our slide-down
@@ -170,17 +123,23 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
     return () => clearTimeout(t);
   }, [phase]);
 
-  // Safety net for the video stage.
+  // When the video stage begins, the element is already preloaded — start it
+  // from the top so it plays instantly (no buffering box).
   useEffect(() => {
     if (phase !== 'video') return;
+    const v = videoRef.current;
+    if (v) {
+      try { v.currentTime = 0; } catch (_) {}
+      const p = v.play();
+      if (p && p.catch) p.catch(() => {});
+    }
     const t = setTimeout(finish, VIDEO_MAX_MS);
     return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase]);
 
   // During the video, a deliberate scroll/swipe DOWN throws the curtain open
-  // early. Needs a proper push (not a twitch): accumulate wheel delta on
-  // laptops (2-finger / mouse-wheel down) and require a real swipe on touch.
+  // early. Needs a proper push (not a twitch).
   useEffect(() => {
     if (phase !== 'video') return;
     let accum = 0;
@@ -214,22 +173,57 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase]);
 
+  const toggleMute = (e) => {
+    e.stopPropagation();
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = !v.muted;
+    setMuted(v.muted);
+  };
+
   return (
     <motion.div
-      className="fixed inset-0 z-[9999] bg-[#030014] overflow-hidden"
+      className="fixed inset-0 z-[9999] bg-[#030014] overflow-hidden will-change-transform"
       initial={{ opacity: 1 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{
-        y: ['0%', '-5%', '115%'],
-        scale: [1, 1.03, 0.9],
-        borderRadius: ['0px', '0px', '48px'],
-      }}
-      transition={{ duration: 1.05, ease: [0.7, 0, 0.2, 1], times: [0, 0.18, 1] }}
+      exit={{ y: ['0%', '-4%', '112%'], scale: [1, 1.02, 0.94] }}
+      transition={{ duration: 0.95, ease: [0.7, 0, 0.2, 1], times: [0, 0.16, 1] }}
     >
       <BackgroundEffect />
-      <AnimatePresence mode="wait">
-        {phase === 'text' ? <TextIntro key="text" /> : <VideoIntro key="video" onDone={finish} />}
-      </AnimatePresence>
+
+      {/* Video layer — mounted from the start so it preloads during the text
+          splash; only made visible/played once we hit the video stage. */}
+      <div
+        className={`absolute inset-0 flex items-center justify-center px-4 transition-opacity duration-500 ${
+          phase === 'video' ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        <div className="relative w-[94%] max-w-5xl">
+          <div className="absolute -inset-4 bg-gradient-to-r from-indigo-600/30 to-purple-600/30 blur-3xl rounded-[2rem]" />
+          <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-purple-900/40 bg-black">
+            <video
+              ref={videoRef}
+              src="/intro.mp4"
+              className="w-full h-auto block"
+              muted={muted}
+              playsInline
+              preload="auto"
+              onEnded={finish}
+              onError={finish}
+            />
+            <button
+              onClick={toggleMute}
+              aria-label={muted ? 'Unmute' : 'Mute'}
+              className="absolute top-3 right-3 z-10 p-2.5 rounded-full bg-black/40 backdrop-blur-md border border-white/15 text-white/90 hover:bg-black/60 hover:scale-105 transition-all duration-300"
+            >
+              {muted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Text splash on top during stage 1 */}
+      <AnimatePresence>{phase === 'text' && <TextIntro key="text" />}</AnimatePresence>
     </motion.div>
   );
 };

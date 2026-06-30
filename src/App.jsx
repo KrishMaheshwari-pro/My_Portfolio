@@ -25,41 +25,40 @@ import CursorTrail from "./components/CursorTrail";
 const LandingPage = ({ showWelcome, setShowWelcome, introPhase, onReplayIntro }) => {
   return (
     <>
+      {/* Site is always mounted/painted underneath. The intro is just an overlay
+          on top, so revealing it is a pure slide with nothing to build — no
+          mount jank / "reload" flash mid-animation. */}
+      <ScrollProgress />
+      <GrainOverlay />
+      <CursorTrail />
+      <Navbar onReplayIntro={onReplayIntro} />
+      <AnimatedBackground />
+      <Home />
+      <Reveal><About /></Reveal>
+      <Reveal><StatsBand /></Reveal>
+      <Reveal><Education /></Reveal>
+      <Reveal><Experience /></Reveal>
+      <Reveal><Portofolio /></Reveal>
+      <Reveal><ContactPage /></Reveal>
+      <footer>
+        <center>
+          <hr className="my-3 border-gray-400 opacity-15 sm:mx-auto lg:my-6 text-center" />
+          <span className="block text-sm pb-4 text-gray-500 text-center dark:text-gray-400">
+            © 2026{" "}
+            <a href="https://flowbite.com/" className="hover:underline">
+              Krish™
+            </a>
+            . All Rights Reserved.
+          </span>
+        </center>
+      </footer>
+      <ScrollToTop />
+
       <AnimatePresence mode="wait">
         {showWelcome && (
           <WelcomeScreen startPhase={introPhase} onLoadingComplete={() => setShowWelcome(false)} />
         )}
       </AnimatePresence>
-
-      {!showWelcome && (
-        <>
-          <ScrollProgress />
-          <GrainOverlay />
-          <CursorTrail />
-          <Navbar onReplayIntro={onReplayIntro} />
-          <AnimatedBackground />
-          <Home />
-          <Reveal><About /></Reveal>
-          <Reveal><StatsBand /></Reveal>
-          <Reveal><Education /></Reveal>
-          <Reveal><Experience /></Reveal>
-          <Reveal><Portofolio /></Reveal>
-          <Reveal><ContactPage /></Reveal>
-          <footer>
-            <center>
-              <hr className="my-3 border-gray-400 opacity-15 sm:mx-auto lg:my-6 text-center" />
-              <span className="block text-sm pb-4 text-gray-500 text-center dark:text-gray-400">
-                © 2026{" "}
-                <a href="https://flowbite.com/" className="hover:underline">
-                  Krish™
-                </a>
-                . All Rights Reserved.
-              </span>
-            </center>
-          </footer>
-          <ScrollToTop />
-        </>
-      )}
     </>
   );
 };
