@@ -112,6 +112,9 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
   const finish = () => {
     if (finished.current) return;
     finished.current = true;
+    // Pause the video so the slide-down isn't fighting live video decode/paint.
+    const v = videoRef.current;
+    if (v) { try { v.pause(); } catch (_) {} }
     onLoadingComplete?.();
   };
 
@@ -181,6 +184,12 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
     setMuted(v.muted);
   };
 
+  // Only react to end/error once we're actually showing the video — the element
+  // autoplays muted behind the text to warm the decoder, and a short clip could
+  // otherwise "end" during the splash and dismiss the intro prematurely.
+  const handleEnded = () => { if (phase === 'video') finish(); };
+  const handleError = () => { if (phase === 'video') finish(); };
+
   return (
     <motion.div
       className="fixed inset-0 z-[9999] bg-[#030014] overflow-hidden will-change-transform"
@@ -205,11 +214,12 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
               ref={videoRef}
               src="/intro.mp4"
               className="w-full h-auto block"
+              autoPlay
               muted={muted}
               playsInline
               preload="auto"
-              onEnded={finish}
-              onError={finish}
+              onEnded={handleEnded}
+              onError={handleError}
             />
             <button
               onClick={toggleMute}
