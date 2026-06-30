@@ -147,14 +147,11 @@ const VideoIntro = ({ onDone }) => {
         </div>
       </div>
 
-      {/* Skip / enter site */}
-      <button
-        onClick={onDone}
-        className="mt-7 group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-sm font-medium text-white/90 hover:bg-white/20 hover:scale-105 transition-all duration-300"
-      >
-        Enter Site
-        <ChevronsDown className="w-4 h-4 animate-bounce group-hover:translate-y-0.5 transition-transform" />
-      </button>
+      {/* hint: scroll / swipe down to enter (no button — just the gesture) */}
+      <div className="mt-7 flex flex-col items-center gap-1 text-white/50 text-xs sm:text-sm select-none">
+        <span>scroll / swipe down to enter</span>
+        <ChevronsDown className="w-4 h-4 animate-bounce" />
+      </div>
     </motion.div>
   );
 };
@@ -196,13 +193,53 @@ const WelcomeScreen = ({ onLoadingComplete }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase]);
 
+  // During the video, a deliberate scroll/swipe DOWN throws the curtain open
+  // early. Needs a proper push (not a twitch): accumulate wheel delta on
+  // laptops (2-finger / mouse-wheel down) and require a real swipe on touch.
+  useEffect(() => {
+    if (phase !== 'video') return;
+    let accum = 0;
+    let startY = null;
+
+    const onWheel = (e) => {
+      if (e.deltaY > 0) {
+        accum += e.deltaY;
+        if (accum > 110) finish();
+      } else {
+        accum = 0;
+      }
+    };
+    const onTouchStart = (e) => { startY = e.touches[0]?.clientY ?? null; };
+    const onTouchMove = (e) => {
+      if (startY == null) return;
+      if (e.touches[0].clientY - startY > 90) finish(); // swiped down
+    };
+    const onTouchEnd = () => { startY = null; };
+
+    window.addEventListener('wheel', onWheel, { passive: true });
+    window.addEventListener('touchstart', onTouchStart, { passive: true });
+    window.addEventListener('touchmove', onTouchMove, { passive: true });
+    window.addEventListener('touchend', onTouchEnd, { passive: true });
+    return () => {
+      window.removeEventListener('wheel', onWheel);
+      window.removeEventListener('touchstart', onTouchStart);
+      window.removeEventListener('touchmove', onTouchMove);
+      window.removeEventListener('touchend', onTouchEnd);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phase]);
+
   return (
     <motion.div
       className="fixed inset-0 z-[9999] bg-[#030014] overflow-hidden"
       initial={{ opacity: 1 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ y: '100%' }}
-      transition={{ duration: 1.0, ease: [0.76, 0, 0.24, 1] }}
+      exit={{
+        y: ['0%', '-5%', '115%'],
+        scale: [1, 1.03, 0.9],
+        borderRadius: ['0px', '0px', '48px'],
+      }}
+      transition={{ duration: 1.05, ease: [0.7, 0, 0.2, 1], times: [0, 0.18, 1] }}
     >
       <BackgroundEffect />
       <AnimatePresence mode="wait">
