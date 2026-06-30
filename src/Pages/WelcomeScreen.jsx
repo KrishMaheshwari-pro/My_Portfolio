@@ -119,7 +119,7 @@ const VideoIntro = ({ onDone }) => {
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.6, ease: 'easeInOut' }}
     >
-      <div className="relative w-[92%] max-w-3xl">
+      <div className="relative w-[94%] max-w-5xl">
         {/* themed glow behind the frame */}
         <div className="absolute -inset-4 bg-gradient-to-r from-indigo-600/30 to-purple-600/30 blur-3xl rounded-[2rem]" />
 
@@ -162,6 +162,15 @@ const VideoIntro = ({ onDone }) => {
 const WelcomeScreen = ({ onLoadingComplete }) => {
   const [phase, setPhase] = useState('text'); // 'text' → 'video'
   const finished = useRef(false);
+
+  // Lock page scroll for the entire intro; restore it on reveal.
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, []);
 
   // Drop the welcome flag. App's AnimatePresence then plays our slide-down
   // `exit` while the real site mounts beneath — a seamless reveal.
