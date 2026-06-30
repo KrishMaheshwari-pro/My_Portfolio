@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Film } from "lucide-react";
 
-const Navbar = () => {
+const Navbar = ({ onReplayIntro }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState("Home");
@@ -127,11 +127,28 @@ const Navbar = () => {
                                     />
                                 </a>
                             ))}
+                            {/* Replay intro video */}
+                            <button
+                                onClick={onReplayIntro}
+                                title="Replay intro video"
+                                aria-label="Replay intro video"
+                                className="text-[#e2d3fd] hover:text-white hover:scale-110 transition-all duration-300"
+                            >
+                                <Film className="w-4 h-4" />
+                            </button>
                         </div>
                     </div>
-        
+
                     {/* Mobile Menu Button */}
-                    <div className="md:hidden">
+                    <div className="md:hidden flex items-center gap-3">
+                        <button
+                            onClick={onReplayIntro}
+                            title="Replay intro video"
+                            aria-label="Replay intro video"
+                            className="p-2 text-[#e2d3fd] hover:text-white transition-colors duration-300"
+                        >
+                            <Film className="w-5 h-5" />
+                        </button>
                         <button
                             onClick={() => setIsOpen(!isOpen)}
                             className={`relative p-2 text-[#e2d3fd] hover:text-white transition-transform duration-300 ease-in-out transform ${

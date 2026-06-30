@@ -22,12 +22,12 @@ import GrainOverlay from "./components/GrainOverlay";
 import StatsBand from "./components/StatsBand";
 import CursorTrail from "./components/CursorTrail";
 
-const LandingPage = ({ showWelcome, setShowWelcome }) => {
+const LandingPage = ({ showWelcome, setShowWelcome, introPhase, onReplayIntro }) => {
   return (
     <>
       <AnimatePresence mode="wait">
         {showWelcome && (
-          <WelcomeScreen onLoadingComplete={() => setShowWelcome(false)} />
+          <WelcomeScreen startPhase={introPhase} onLoadingComplete={() => setShowWelcome(false)} />
         )}
       </AnimatePresence>
 
@@ -36,7 +36,7 @@ const LandingPage = ({ showWelcome, setShowWelcome }) => {
           <ScrollProgress />
           <GrainOverlay />
           <CursorTrail />
-          <Navbar />
+          <Navbar onReplayIntro={onReplayIntro} />
           <AnimatedBackground />
           <Home />
           <Reveal><About /></Reveal>
@@ -84,12 +84,19 @@ const ProjectPageLayout = () => (
 
 function App() {
   const [showWelcome, setShowWelcome] = useState(true);
+  const [introPhase, setIntroPhase] = useState('text'); // first load shows text → video
   useTilt();
+
+  // Navbar "replay" jumps straight to the video stage.
+  const replayIntro = () => {
+    setIntroPhase('video');
+    setShowWelcome(true);
+  };
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LandingPage showWelcome={showWelcome} setShowWelcome={setShowWelcome} />} />
+        <Route path="/" element={<LandingPage showWelcome={showWelcome} setShowWelcome={setShowWelcome} introPhase={introPhase} onReplayIntro={replayIntro} />} />
         <Route path="/project/:id" element={<ProjectPageLayout />} />
          <Route path="*" element={<NotFoundPage />} /> {/* Ini route 404 */}
       </Routes>

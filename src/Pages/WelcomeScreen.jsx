@@ -156,8 +156,8 @@ const VideoIntro = ({ onDone }) => {
   );
 };
 
-const WelcomeScreen = ({ onLoadingComplete }) => {
-  const [phase, setPhase] = useState('text'); // 'text' → 'video'
+const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
+  const [phase, setPhase] = useState(startPhase); // 'text' → 'video'
   const finished = useRef(false);
 
   // Lock page scroll for the entire intro; restore it on reveal.
