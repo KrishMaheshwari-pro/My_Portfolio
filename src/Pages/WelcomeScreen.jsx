@@ -154,15 +154,6 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
   const [phase, setPhase] = useState(startPhase); // 'text' → 'video'
   const finished = useRef(false);
 
-  // Lock page scroll for the entire intro; restore it on reveal.
-  useEffect(() => {
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.body.style.overflow = prev;
-    };
-  }, []);
-
   // Drop the welcome flag. App's AnimatePresence then plays our slide-down
   // `exit` while the real site mounts beneath — a seamless reveal.
   const finish = () => {

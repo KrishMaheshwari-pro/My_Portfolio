@@ -93,6 +93,45 @@ function App() {
     setShowWelcome(true);
   };
 
+  // Scroll handling for the intro:
+  //  • while the intro shows  → scroll is fully locked
+  //  • when it reveals the site → pin to the very top (Home) and swallow the
+  //    leftover scroll momentum from the trigger gesture, so we land on Home and
+  //    STOP. Only once the user stops and scrolls again does the page move down.
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    if (showWelcome) {
+      // Intro on screen — stay locked; the reveal branch releases it.
+      return () => { document.body.style.overflow = prev; };
+    }
+
+    // Reveal phase: keep locked, glue to Home, absorb residual scroll.
+    window.scrollTo(0, 0);
+    let idle;
+    const release = () => {
+      document.body.style.overflow = prev || '';
+      teardown();
+    };
+    const bump = () => {
+      window.scrollTo(0, 0);
+      clearTimeout(idle);
+      idle = setTimeout(release, 240); // release shortly after gestures quiet down
+    };
+    const onWheel = (e) => { e.preventDefault(); bump(); };
+    const onTouchMove = (e) => { e.preventDefault(); bump(); };
+    window.addEventListener('wheel', onWheel, { passive: false });
+    window.addEventListener('touchmove', onTouchMove, { passive: false });
+    idle = setTimeout(release, 1300); // also covers the slide if no further input
+    function teardown() {
+      clearTimeout(idle);
+      window.removeEventListener('wheel', onWheel);
+      window.removeEventListener('touchmove', onTouchMove);
+    }
+    return teardown;
+  }, [showWelcome]);
+
   return (
     <BrowserRouter>
       <Routes>
