@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Code2, Github, Globe, User, Volume2, VolumeX, ChevronsDown } from 'lucide-react';
+import { Code2, Github, Globe, User, Volume2, VolumeX } from 'lucide-react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -145,12 +145,6 @@ const VideoIntro = ({ onDone }) => {
             {muted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
           </button>
         </div>
-      </div>
-
-      {/* hint: scroll / swipe down to enter (no button — just the gesture) */}
-      <div className="mt-7 flex flex-col items-center gap-1 text-white/50 text-xs sm:text-sm select-none">
-        <span>scroll / swipe down to enter</span>
-        <ChevronsDown className="w-4 h-4 animate-bounce" />
       </div>
     </motion.div>
   );
