@@ -3,6 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Code2, Github, Globe, User, Volume2, VolumeX } from 'lucide-react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+// Intro clip. Swap this import to intro-old.mp4 to bring back the previous one;
+// the old video stays parked in the same folder, just unused.
+import introVideo from '../assets/videos/intro.mp4';
 
 // Two-stage intro:
 //   1) animated "Welcome To My Portfolio" text (the original splash)
@@ -212,7 +215,7 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
           <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-purple-900/40 bg-black">
             <video
               ref={videoRef}
-              src="/intro.mp4"
+              src={introVideo}
               className="w-full h-auto block"
               autoPlay
               muted={muted}
