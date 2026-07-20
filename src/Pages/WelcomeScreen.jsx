@@ -106,17 +106,20 @@ const TextIntro = () => (
 
 const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
   const [phase, setPhase] = useState(startPhase); // 'text' → 'video'
+  const [leaving, setLeaving] = useState(false);  // true once the reveal starts
   const videoRef = useRef(null);
   const finished = useRef(false);
 
-  // Drop the welcome flag. App's AnimatePresence then plays our slide-down
-  // `exit` while the real site mounts beneath — a seamless reveal.
+  // Drop the welcome flag. App's AnimatePresence then plays our slide `exit`
+  // while the real site mounts beneath — a seamless reveal.
   const finish = () => {
     if (finished.current) return;
     finished.current = true;
-    // Pause the video so the slide-down isn't fighting live video decode/paint.
+    // Pause the video AND drop the heavy blurred layers so the slide is a pure,
+    // GPU-cheap transform — no live decode, no blur re-compositing mid-swipe.
     const v = videoRef.current;
     if (v) { try { v.pause(); } catch (_) {} }
+    setLeaving(true);
     onLoadingComplete?.();
   };
 
@@ -228,10 +231,10 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
       className="fixed inset-0 z-[9999] bg-[#030014] overflow-hidden will-change-transform"
       initial={{ opacity: 1 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ y: ['0%', '4%', '-112%'], scale: [1, 1.02, 0.94] }}
-      transition={{ duration: 0.95, ease: [0.7, 0, 0.2, 1], times: [0, 0.16, 1] }}
+      exit={{ y: ['0%', '4%', '-112%'] }}
+      transition={{ duration: 0.9, ease: [0.7, 0, 0.2, 1], times: [0, 0.16, 1] }}
     >
-      <BackgroundEffect />
+      {!leaving && <BackgroundEffect />}
 
       {/* Video layer — mounted from the start so it preloads during the text
           splash; only made visible/played once we hit the video stage. */}
@@ -241,8 +244,10 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
         }`}
       >
         <div className="relative w-[94%] max-w-5xl">
-          <div className="absolute -inset-4 bg-gradient-to-r from-indigo-600/30 to-purple-600/30 blur-3xl rounded-[2rem]" />
-          <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-purple-900/40 bg-black">
+          {!leaving && (
+            <div className="absolute -inset-4 bg-gradient-to-r from-indigo-600/30 to-purple-600/30 blur-3xl rounded-[2rem]" />
+          )}
+          <div className={`relative rounded-2xl overflow-hidden border border-white/10 bg-black ${leaving ? '' : 'shadow-2xl shadow-purple-900/40'}`}>
             {/* Muting is controlled imperatively (warm-up muted, then unmuted)
                 so React never re-asserts a static muted attribute. */}
             <video
