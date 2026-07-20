@@ -21,16 +21,23 @@ const VIDEO_MAX_MS = 14000; // safety net so a stalled video never traps anyone
 const TypewriterEffect = ({ text }) => {
   const [displayText, setDisplayText] = useState('');
   useEffect(() => {
-    let index = 0;
-    const timer = setInterval(() => {
-      if (index <= text.length) {
-        setDisplayText(text.slice(0, index));
-        index++;
+    let i = 0;
+    let dir = 1; // 1 = typing, -1 = erasing
+    let timer;
+    const step = () => {
+      setDisplayText(text.slice(0, i));
+      if (dir === 1) {
+        if (i === text.length) { dir = -1; timer = setTimeout(step, 1600); return; } // hold full name
+        i++;
+        timer = setTimeout(step, 120);
       } else {
-        clearInterval(timer);
+        if (i === 0) { dir = 1; timer = setTimeout(step, 500); return; } // brief pause, then retype
+        i--;
+        timer = setTimeout(step, 55);
       }
-    }, 120);
-    return () => clearInterval(timer);
+    };
+    step();
+    return () => clearTimeout(timer);
   }, [text]);
   return (
     <span className="inline-block">
