@@ -53,6 +53,16 @@ html.lenis body {
 	animation: blob 8s infinite;
 }
 
+/* Intro reveal: pure-compositor slide up so it stays smooth even while the user
+   is actively swiping (event handlers can't stall a compositor animation). */
+@keyframes intro-slide-up {
+	to { transform: translateY(-110%); }
+}
+.intro-leaving {
+	animation: intro-slide-up 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+	will-change: transform;
+}
+
 .animation-delay-2000 {
 	animation-delay: 2s;
 }

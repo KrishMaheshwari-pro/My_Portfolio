@@ -215,7 +215,7 @@ const Home = () => {
                 }`}>
                 </div>
 
-                <div className={`relative lg:left-12 z-10 w-full opacity-90 transform transition-transform duration-500 ${
+                <div className={`relative z-10 w-full flex justify-center opacity-90 transform transition-transform duration-500 ${
                   isHovering ? "scale-105" : "scale-100"
                 }`}>
                   {/* Size MUST live in className — this lib ignores `style` when
@@ -225,7 +225,7 @@ const Home = () => {
                     src="/Coding.json"
                     loop
                     autoplay
-                    className={`w-[340px] sm:w-[400px] lg:w-[440px] xl:w-[480px] max-w-[85vw] aspect-square mx-auto transition-all duration-500 ${
+                    className={`w-[280px] sm:w-[330px] lg:w-[370px] xl:w-[400px] max-w-[80vw] aspect-square mx-auto transition-all duration-500 ${
                       isHovering
                         ? "scale-105 rotate-1"
                         : "scale-100"

@@ -119,17 +119,18 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
   const tapped = useRef(false);   // the visitor's tap = the browser's audio unlock
   const animDone = useRef(false); // the intro animation has finished
 
-  // Drop the welcome flag. App's AnimatePresence then plays our slide `exit`
-  // while the real site mounts beneath — a seamless reveal.
+  // Reveal: pause the video + drop the blurred layers, then run a pure-CSS
+  // compositor slide (the `intro-leaving` class). The page stays fully locked
+  // during the slide (App keeps showWelcome=true until we call onLoadingComplete
+  // below), so nothing on the main thread competes and it stays smooth even
+  // mid-swipe. We unmount only after the slide finishes.
   const finish = () => {
     if (finished.current) return;
     finished.current = true;
-    // Pause the video AND drop the heavy blurred layers so the slide is a pure,
-    // GPU-cheap transform — no live decode, no blur re-compositing mid-swipe.
     const v = videoRef.current;
     if (v) { try { v.pause(); } catch (_) {} }
     setLeaving(true);
-    onLoadingComplete?.();
+    setTimeout(() => onLoadingComplete?.(), 820); // after the 0.8s CSS slide
   };
 
   // Stage 1 → 2: hold the text splash, then reveal the video.
@@ -162,7 +163,11 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
     }, TEXT_MS);
 
     const opts = { passive: true };
-    const evts = ['pointerdown', 'keydown', 'touchstart', 'touchmove', 'wheel'];
+    // Only gestures the browser accepts as an audio unlock advance the intro —
+    // pointerdown (click/tap), touchstart (finger), keydown. A mouse/trackpad
+    // SCROLL (wheel) is deliberately excluded: browsers never let scrolling
+    // unlock sound, so advancing on it would drop us into a muted video.
+    const evts = ['pointerdown', 'keydown', 'touchstart'];
     evts.forEach((ev) => window.addEventListener(ev, onTap, opts));
     return () => {
       clearTimeout(t);
@@ -259,12 +264,10 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
   const handleError = () => { if (phase === 'video') finish(); };
 
   return (
-    <motion.div
-      className="fixed inset-0 z-[9999] bg-[#030014] overflow-hidden will-change-transform"
-      initial={{ opacity: 1 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ y: '-110%' }}
-      transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+    <div
+      className={`fixed inset-0 z-[9999] bg-[#030014] overflow-hidden will-change-transform ${
+        leaving ? 'intro-leaving' : ''
+      }`}
     >
       {!leaving && <BackgroundEffect />}
 
@@ -298,7 +301,7 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
 
       {/* Text splash on top during stage 1 */}
       <AnimatePresence>{phase === 'text' && <TextIntro key="text" />}</AnimatePresence>
-    </motion.div>
+    </div>
   );
 };
 
