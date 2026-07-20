@@ -124,6 +124,10 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
   useEffect(() => {
     if (phase !== 'text') return;
     AOS.init({ duration: 1000, once: false, mirror: false });
+    // Warm the decoder silently behind the text so the clip is instant on
+    // reveal (no black loading box). Muted here is only for this warm-up.
+    const v = videoRef.current;
+    if (v) { v.muted = true; const p = v.play(); if (p && p.catch) p.catch(() => {}); }
     const t = setTimeout(() => setPhase('video'), TEXT_MS);
     return () => clearTimeout(t);
   }, [phase]);
@@ -135,13 +139,15 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
     const v = videoRef.current;
     if (v) {
       try { v.currentTime = 0; } catch (_) {}
-      v.muted = false; // play with natural sound
+      v.muted = false; // play LOUD by default
+      v.volume = 1;
       const p = v.play();
       if (p && p.catch) {
         p.catch(() => {
-          // Browsers block sound-on autoplay until the visitor interacts with
-          // the page — fall back to muted so the clip still plays (and slides)
-          // instead of freezing on a blank frame.
+          // Browsers hard-block sound-on autoplay until the visitor has
+          // interacted with the page — play muted so the clip still shows;
+          // the first-gesture unlock below flips sound on the instant they
+          // click / tap / press a key.
           v.muted = true;
           const p2 = v.play();
           if (p2 && p2.catch) p2.catch(() => {});
@@ -152,6 +158,30 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
     return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase]);
+
+  // Guarantee sound: browsers block audio until a REAL gesture (click / tap /
+  // key). The instant one happens anywhere, unmute and go full volume. This is
+  // the only way to get reliable sound on a first, gesture-less page load.
+  useEffect(() => {
+    const unlock = () => {
+      if (finished.current) return;
+      const v = videoRef.current;
+      if (!v) return;
+      v.muted = false;
+      v.volume = 1;
+      const p = v.play();
+      if (p && p.catch) p.catch(() => {});
+    };
+    const opts = { passive: true };
+    window.addEventListener('pointerdown', unlock, opts);
+    window.addEventListener('keydown', unlock, opts);
+    window.addEventListener('touchend', unlock, opts);
+    return () => {
+      window.removeEventListener('pointerdown', unlock);
+      window.removeEventListener('keydown', unlock);
+      window.removeEventListener('touchend', unlock);
+    };
+  }, []);
 
   // During the video, a deliberate scroll/swipe DOWN throws the curtain open
   // early. Needs a proper push (not a twitch).
@@ -214,14 +244,13 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
         <div className="relative w-[94%] max-w-5xl">
           <div className="absolute -inset-4 bg-gradient-to-r from-indigo-600/30 to-purple-600/30 blur-3xl rounded-[2rem]" />
           <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-purple-900/40 bg-black">
-            {/* `muted` here only warms the decoder silently behind the text
-                splash; the video-phase effect unmutes it for natural sound. */}
+            {/* Unmuted by default. It's warmed muted behind the splash, then
+                unmuted for playback; a first click/tap/key guarantees sound. */}
             <video
               ref={videoRef}
               src={introVideo}
               className="w-full h-auto block"
               autoPlay
-              muted
               playsInline
               preload="auto"
               onEnded={handleEnded}
