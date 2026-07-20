@@ -1,7 +1,6 @@
 import React, { useEffect, memo } from "react";
 import { FileText, Code, Sparkles } from "lucide-react";
 import Magnetic from "../components/Magnetic";
-import Sticker from "../components/Sticker";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -36,12 +35,6 @@ const ProfileImage = memo(() => (
       data-aos="fade-up"
       data-aos-duration="1000"
     >
-      {/* Gen-Z peel stickers framing the photo */}
-      <Sticker emoji="👋" size="lg" rotate={-14} delay={300}
-        className="-top-2 left-5 sm:left-9" />
-      <Sticker dot label="open to work" size="sm" rotate={-3} delay={650}
-        className="-bottom-2 left-1/2 -translate-x-1/2" />
-
       <div className="absolute -inset-6 opacity-[25%] z-0 hidden sm:block">
         <div className="absolute inset-0 bg-gradient-to-r from-violet-600 via-indigo-500 to-purple-600 rounded-full blur-2xl animate-spin-slower" />
         <div className="absolute inset-0 bg-gradient-to-l from-fuchsia-500 via-rose-500 to-pink-600 rounded-full blur-2xl animate-pulse-slow opacity-50" />
