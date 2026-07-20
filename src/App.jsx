@@ -106,27 +106,28 @@ function App() {
       return () => { document.body.style.overflow = prev; };
     }
 
-    // Reveal phase: keep locked, glue to Home, absorb residual scroll.
+    // Reveal phase: the page is already locked by overflow:hidden, so we do NOT
+    // call scrollTo / preventDefault per wheel event — those force a synchronous
+    // reflow (scrollTo) and block the scroll thread (non-passive preventDefault)
+    // on EVERY event, which is exactly what made a mid-swipe reveal stutter.
+    // Instead: pin once, keep the lock, and release shortly after the user's
+    // gesture goes quiet — using cheap, passive listeners that only reset a timer.
     window.scrollTo(0, 0);
-    let idle;
-    const release = () => {
+    let idle = setTimeout(release, 1000); // release after the slide settles
+    function release() {
       document.body.style.overflow = prev || '';
       teardown();
-    };
+    }
     const bump = () => {
-      window.scrollTo(0, 0);
       clearTimeout(idle);
-      idle = setTimeout(release, 240); // release shortly after gestures quiet down
+      idle = setTimeout(release, 260); // hold the lock until scrolling quiets down
     };
-    const onWheel = (e) => { e.preventDefault(); bump(); };
-    const onTouchMove = (e) => { e.preventDefault(); bump(); };
-    window.addEventListener('wheel', onWheel, { passive: false });
-    window.addEventListener('touchmove', onTouchMove, { passive: false });
-    idle = setTimeout(release, 1300); // also covers the slide if no further input
+    window.addEventListener('wheel', bump, { passive: true });
+    window.addEventListener('touchmove', bump, { passive: true });
     function teardown() {
       clearTimeout(idle);
-      window.removeEventListener('wheel', onWheel);
-      window.removeEventListener('touchmove', onTouchMove);
+      window.removeEventListener('wheel', bump);
+      window.removeEventListener('touchmove', bump);
     }
     return teardown;
   }, [showWelcome]);

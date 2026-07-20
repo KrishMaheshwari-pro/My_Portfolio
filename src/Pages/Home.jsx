@@ -218,15 +218,16 @@ const Home = () => {
                 <div className={`relative lg:left-12 z-10 w-full opacity-90 transform transition-transform duration-500 ${
                   isHovering ? "scale-105" : "scale-100"
                 }`}>
+                  {/* Size MUST live in className — this lib ignores `style` when
+                      a className is present. aspect-square gives the canvas a
+                      height to fill. */}
                   <DotLottieReact
                     src="/Coding.json"
                     loop
                     autoplay
-                    renderer="svg"
-                    style={{ width: "720px", height: "720px" }}
-                    className={`transition-all duration-500 ${
-                      isHovering 
-                        ? "scale-105 rotate-1" 
+                    className={`w-[440px] sm:w-[520px] lg:w-[580px] xl:w-[660px] max-w-[90vw] aspect-square mx-auto transition-all duration-500 ${
+                      isHovering
+                        ? "scale-105 rotate-1"
                         : "scale-100"
                     }`}
                   />

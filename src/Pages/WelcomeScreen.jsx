@@ -145,8 +145,9 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
     if (v) { v.muted = true; const p = v.play(); if (p && p.catch) p.catch(() => {}); }
 
     // Advance to the video only once BOTH have happened: the animation is done
-    // AND the visitor has tapped. The tap is what unlocks browser audio, so the
-    // video always plays with sound (sticky user activation persists).
+    // AND the visitor interacted. ANY interaction counts — tap, click, swipe,
+    // scroll, key — at any time, during or after the animation. A tap/click/key
+    // also unlocks browser audio, so the video plays with sound.
     const advance = () => {
       if (tapped.current && animDone.current) setPhase('video');
     };
@@ -161,14 +162,11 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
     }, TEXT_MS);
 
     const opts = { passive: true };
-    window.addEventListener('pointerdown', onTap, opts);
-    window.addEventListener('keydown', onTap, opts);
-    window.addEventListener('touchstart', onTap, opts);
+    const evts = ['pointerdown', 'keydown', 'touchstart', 'touchmove', 'wheel'];
+    evts.forEach((ev) => window.addEventListener(ev, onTap, opts));
     return () => {
       clearTimeout(t);
-      window.removeEventListener('pointerdown', onTap);
-      window.removeEventListener('keydown', onTap);
-      window.removeEventListener('touchstart', onTap);
+      evts.forEach((ev) => window.removeEventListener(ev, onTap));
     };
   }, [phase]);
 
