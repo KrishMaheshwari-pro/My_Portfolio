@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Code2, Github, Globe, User, Volume2, VolumeX } from 'lucide-react';
+import { Code2, Github, Globe, User } from 'lucide-react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 // Intro clip. Swap this import to intro-old.mp4 to bring back the previous one;
@@ -106,7 +106,6 @@ const TextIntro = () => (
 
 const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
   const [phase, setPhase] = useState(startPhase); // 'text' → 'video'
-  const [muted, setMuted] = useState(true);
   const videoRef = useRef(null);
   const finished = useRef(false);
 
@@ -136,8 +135,18 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
     const v = videoRef.current;
     if (v) {
       try { v.currentTime = 0; } catch (_) {}
+      v.muted = false; // play with natural sound
       const p = v.play();
-      if (p && p.catch) p.catch(() => {});
+      if (p && p.catch) {
+        p.catch(() => {
+          // Browsers block sound-on autoplay until the visitor interacts with
+          // the page — fall back to muted so the clip still plays (and slides)
+          // instead of freezing on a blank frame.
+          v.muted = true;
+          const p2 = v.play();
+          if (p2 && p2.catch) p2.catch(() => {});
+        });
+      }
     }
     const t = setTimeout(finish, VIDEO_MAX_MS);
     return () => clearTimeout(t);
@@ -179,14 +188,6 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase]);
 
-  const toggleMute = (e) => {
-    e.stopPropagation();
-    const v = videoRef.current;
-    if (!v) return;
-    v.muted = !v.muted;
-    setMuted(v.muted);
-  };
-
   // Only react to end/error once we're actually showing the video — the element
   // autoplays muted behind the text to warm the decoder, and a short clip could
   // otherwise "end" during the splash and dismiss the intro prematurely.
@@ -213,24 +214,19 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
         <div className="relative w-[94%] max-w-5xl">
           <div className="absolute -inset-4 bg-gradient-to-r from-indigo-600/30 to-purple-600/30 blur-3xl rounded-[2rem]" />
           <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-purple-900/40 bg-black">
+            {/* `muted` here only warms the decoder silently behind the text
+                splash; the video-phase effect unmutes it for natural sound. */}
             <video
               ref={videoRef}
               src={introVideo}
               className="w-full h-auto block"
               autoPlay
-              muted={muted}
+              muted
               playsInline
               preload="auto"
               onEnded={handleEnded}
               onError={handleError}
             />
-            <button
-              onClick={toggleMute}
-              aria-label={muted ? 'Unmute' : 'Mute'}
-              className="absolute top-3 right-3 z-10 p-2.5 rounded-full bg-black/40 backdrop-blur-md border border-white/15 text-white/90 hover:bg-black/60 hover:scale-105 transition-all duration-300"
-            >
-              {muted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-            </button>
           </div>
         </div>
       </div>
