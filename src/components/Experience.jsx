@@ -114,7 +114,7 @@ const Experience = () => {
                    </div>
                   
                   <div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-green-400">Software Development Intern</h3>
+                    <h3 className="text-xl sm:text-2xl font-bold text-green-400">Python Dev</h3>
                     <p className="text-green-300 font-medium">Finalyca</p>
                   </div>
                 </div>
@@ -173,9 +173,9 @@ const Experience = () => {
 
               <div className="flex flex-wrap gap-2">
                 <span className="px-3 py-1 rounded-full text-sm bg-green-500/20 text-green-400 border border-green-500/30">Python</span>
-                <span className="px-3 py-1 rounded-full text-sm bg-green-500/20 text-green-400 border border-green-500/30">Pandas</span>
+                <span className="px-3 py-1 rounded-full text-sm bg-green-500/20 text-green-400 border border-green-500/30">Advance Excel</span>
                 <span className="px-3 py-1 rounded-full text-sm bg-green-500/20 text-green-400 border border-green-500/30">Data Processing</span>
-                <span className="px-3 py-1 rounded-full text-sm bg-green-500/20 text-green-400 border border-green-500/30">Excel Automation</span>
+                <span className="px-3 py-1 rounded-full text-sm bg-green-500/20 text-green-400 border border-green-500/30">Automation</span>
                 <span className="px-3 py-1 rounded-full text-sm bg-green-500/20 text-green-400 border border-green-500/30">ETL Pipelines</span>
                 <span className="px-3 py-1 rounded-full text-sm bg-green-500/20 text-green-400 border border-green-500/30">SQL</span>
               </div>
