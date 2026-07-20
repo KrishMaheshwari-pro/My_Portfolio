@@ -35,6 +35,19 @@ const ProfileImage = memo(() => (
       data-aos="fade-up"
       data-aos-duration="1000"
     >
+      {/* "Open to work" — glass badge matching the site theme */}
+      <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
+        <div className="flex items-center gap-2 rounded-full pl-2.5 pr-3 py-1.5 bg-[#0c0621]/80 backdrop-blur-md border border-[#6366f1]/40 shadow-lg shadow-purple-900/40">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+          </span>
+          <span className="text-[11px] font-semibold tracking-wide text-[#e2d3fd] whitespace-nowrap">
+            Open to work
+          </span>
+        </div>
+      </div>
+
       <div className="absolute -inset-6 opacity-[25%] z-0 hidden sm:block">
         <div className="absolute inset-0 bg-gradient-to-r from-violet-600 via-indigo-500 to-purple-600 rounded-full blur-2xl animate-spin-slower" />
         <div className="absolute inset-0 bg-gradient-to-l from-fuchsia-500 via-rose-500 to-pink-600 rounded-full blur-2xl animate-pulse-slow opacity-50" />
