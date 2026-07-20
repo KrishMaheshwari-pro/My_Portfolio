@@ -53,6 +53,27 @@ html.lenis body {
 	animation: blob 8s infinite;
 }
 
+/* Gen-Z peel stickers: pop in once, then gently wobble forever */
+@keyframes sticker-pop {
+	0%   { transform: rotate(var(--rot, -8deg)) scale(0);    opacity: 0; }
+	70%  { transform: rotate(var(--rot, -8deg)) scale(1.12); opacity: 1; }
+	100% { transform: rotate(var(--rot, -8deg)) scale(1);    opacity: 1; }
+}
+@keyframes sticker-wobble {
+	0%, 100% { transform: rotate(var(--rot, -8deg)) translateY(0); }
+	50%      { transform: rotate(calc(var(--rot, -8deg) * 0.35)) translateY(-3px); }
+}
+.sticker {
+	animation:
+		sticker-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both,
+		sticker-wobble 4s ease-in-out infinite;
+	animation-delay: var(--delay, 0ms), calc(var(--delay, 0ms) + 500ms);
+	will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+	.sticker { animation: sticker-pop 0.5s ease both; }
+}
+
 .animation-delay-2000 {
 	animation-delay: 2s;
 }
