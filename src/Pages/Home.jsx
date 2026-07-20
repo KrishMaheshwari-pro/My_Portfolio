@@ -225,7 +225,7 @@ const Home = () => {
                     src="/Coding.json"
                     loop
                     autoplay
-                    className={`w-[440px] sm:w-[520px] lg:w-[580px] xl:w-[660px] max-w-[90vw] aspect-square mx-auto transition-all duration-500 ${
+                    className={`w-[340px] sm:w-[400px] lg:w-[440px] xl:w-[480px] max-w-[85vw] aspect-square mx-auto transition-all duration-500 ${
                       isHovering
                         ? "scale-105 rotate-1"
                         : "scale-100"
