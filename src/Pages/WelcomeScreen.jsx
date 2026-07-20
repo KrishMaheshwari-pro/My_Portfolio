@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Code2, Github, Globe, User } from 'lucide-react';
+import { Code2, Github, Globe, User, Volume2 } from 'lucide-react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 // Intro clip. Swap this import to intro-old.mp4 to bring back the previous one;
@@ -107,8 +107,11 @@ const TextIntro = () => (
 const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
   const [phase, setPhase] = useState(startPhase); // 'text' → 'video'
   const [leaving, setLeaving] = useState(false);  // true once the reveal starts
+  const [showTapHint, setShowTapHint] = useState(false);
   const videoRef = useRef(null);
   const finished = useRef(false);
+  const tapped = useRef(false);   // the visitor's tap = the browser's audio unlock
+  const animDone = useRef(false); // the intro animation has finished
 
   // Drop the welcome flag. App's AnimatePresence then plays our slide `exit`
   // while the real site mounts beneath — a seamless reveal.
@@ -134,8 +137,35 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
     // (no black box). It's unmuted the moment the video stage begins.
     const v = videoRef.current;
     if (v) { v.muted = true; const p = v.play(); if (p && p.catch) p.catch(() => {}); }
-    const t = setTimeout(() => setPhase('video'), TEXT_MS);
-    return () => clearTimeout(t);
+
+    // Advance to the video only once BOTH have happened: the animation is done
+    // AND the visitor has tapped. The tap is what unlocks browser audio, so the
+    // video always plays with sound (sticky user activation persists).
+    const advance = () => {
+      if (tapped.current && animDone.current) setPhase('video');
+    };
+    const onTap = () => {
+      if (tapped.current) return;
+      tapped.current = true;
+      setShowTapHint(false);
+      advance();
+    };
+    const t = setTimeout(() => {
+      animDone.current = true;
+      if (!tapped.current) setShowTapHint(true); // now prompt the tap
+      advance();
+    }, TEXT_MS);
+
+    const opts = { passive: true };
+    window.addEventListener('pointerdown', onTap, opts);
+    window.addEventListener('keydown', onTap, opts);
+    window.addEventListener('touchstart', onTap, opts);
+    return () => {
+      clearTimeout(t);
+      window.removeEventListener('pointerdown', onTap);
+      window.removeEventListener('keydown', onTap);
+      window.removeEventListener('touchstart', onTap);
+    };
   }, [phase]);
 
   // When the video stage begins, the element is already preloaded — start it
@@ -266,6 +296,26 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
 
       {/* Text splash on top during stage 1 */}
       <AnimatePresence>{phase === 'text' && <TextIntro key="text" />}</AnimatePresence>
+
+      {/* Tap prompt — only after the animation finishes, so the visitor knows to
+          tap (their tap is what unlocks sound + enters the video). */}
+      <AnimatePresence>
+        {phase === 'text' && showTapHint && (
+          <motion.div
+            key="tap-hint"
+            className="absolute inset-x-0 bottom-14 sm:bottom-16 z-20 flex justify-center px-4 pointer-events-none"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <span className="inline-flex items-center gap-2 rounded-full px-4 py-2 bg-white/5 backdrop-blur-md border border-white/10 text-[#e2d3fd] text-sm tracking-wide animate-pulse">
+              <Volume2 className="w-4 h-4" />
+              Tap anywhere to enter
+            </span>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };
