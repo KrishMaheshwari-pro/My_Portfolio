@@ -265,8 +265,8 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
       className="fixed inset-0 z-[9999] bg-[#030014] overflow-hidden will-change-transform"
       initial={{ opacity: 1 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ y: ['0%', '4%', '-112%'] }}
-      transition={{ duration: 0.9, ease: [0.7, 0, 0.2, 1], times: [0, 0.16, 1] }}
+      exit={{ y: '-110%' }}
+      transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
     >
       {!leaving && <BackgroundEffect />}
 
