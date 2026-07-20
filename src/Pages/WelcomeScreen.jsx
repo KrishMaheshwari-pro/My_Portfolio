@@ -15,7 +15,7 @@ import introVideo from '../assets/videos/intro.mp4';
 // The <video> is mounted from the very start (hidden behind the text) so it
 // PRELOADS during the splash and plays instantly when revealed — no black
 // "loading" box / buffering gap between the text and the video.
-const TEXT_MS = 3300;       // text splash: long enough to finish + a short beat
+const TEXT_MS = 2900;       // text splash: lets the fall-in finish + a short beat
 const VIDEO_MAX_MS = 14000; // safety net so a stalled video never traps anyone
 
 const TypewriterEffect = ({ text }) => {
@@ -69,7 +69,7 @@ const TextIntro = () => (
     <div className="w-full max-w-4xl mx-auto">
       <div className="flex justify-center gap-3 sm:gap-4 md:gap-8 mb-6 sm:mb-8 md:mb-12">
         {[Code2, User, Github].map((Icon, index) => (
-          <div key={index} data-aos="fade-down" data-aos-delay={index * 200}>
+          <div key={index} data-aos="fade-down" data-aos-duration="1250" data-aos-delay={index * 200}>
             <IconButton Icon={Icon} />
           </div>
         ))}
@@ -78,18 +78,18 @@ const TextIntro = () => (
       <div className="text-center mb-6 sm:mb-8 md:mb-12">
         <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold space-y-2 sm:space-y-4">
           <div className="mb-2 sm:mb-4">
-            <span data-aos="fade-right" data-aos-delay="200" className="inline-block px-2 bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">Welcome</span>{' '}
-            <span data-aos="fade-right" data-aos-delay="400" className="inline-block px-2 bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">To</span>{' '}
-            <span data-aos="fade-right" data-aos-delay="600" className="inline-block px-2 bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">My</span>
+            <span data-aos="fade-right" data-aos-duration="1250" data-aos-delay="300" className="inline-block px-2 bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">Welcome</span>{' '}
+            <span data-aos="fade-right" data-aos-duration="1250" data-aos-delay="450" className="inline-block px-2 bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">To</span>{' '}
+            <span data-aos="fade-right" data-aos-duration="1250" data-aos-delay="600" className="inline-block px-2 bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">My</span>
           </div>
           <div>
-            <span data-aos="fade-up" data-aos-delay="800" className="inline-block px-2 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Portfolio</span>{' '}
-            <span data-aos="fade-up" data-aos-delay="1000" className="inline-block px-2 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Website</span>
+            <span data-aos="fade-up" data-aos-duration="1250" data-aos-delay="800" className="inline-block px-2 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Portfolio</span>{' '}
+            <span data-aos="fade-up" data-aos-duration="1250" data-aos-delay="950" className="inline-block px-2 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Website</span>
           </div>
         </h1>
       </div>
 
-      <div className="text-center" data-aos="fade-up" data-aos-delay="1200">
+      <div className="text-center" data-aos="fade-up" data-aos-duration="1250" data-aos-delay="1150">
         <div className="inline-flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-full relative">
           <div className="absolute inset-0 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 rounded-full blur-md" />
           <div className="relative flex items-center gap-2 text-lg sm:text-xl md:text-2xl">
@@ -123,8 +123,14 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
   // Stage 1 → 2: hold the text splash, then reveal the video.
   useEffect(() => {
     if (phase !== 'text') return;
-    // Slower, more graceful fall-in for the icons + heading.
-    AOS.init({ duration: 1500, once: false, mirror: false });
+    // Per-element data-aos-duration drives the slow fall-in; init is just a
+    // baseline (the intro elements override it explicitly so nothing else can
+    // reset them to the fast default).
+    AOS.init({ duration: 1250, once: false, mirror: false });
+    // Warm the decoder muted behind the splash so the clip is instant on reveal
+    // (no black box). It's unmuted the moment the video stage begins.
+    const v = videoRef.current;
+    if (v) { v.muted = true; const p = v.play(); if (p && p.catch) p.catch(() => {}); }
     const t = setTimeout(() => setPhase('video'), TEXT_MS);
     return () => clearTimeout(t);
   }, [phase]);
@@ -153,6 +159,27 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
     const t = setTimeout(finish, VIDEO_MAX_MS);
     return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phase]);
+
+  // Bring sound up the instant the visitor does ANYTHING (click / tap / key /
+  // scroll) during the video. Browsers block sound-on autoplay for gesture-less
+  // first loads, so this is what makes it audible for anyone not already
+  // "engaged". Scoped to the video stage so a click during the text splash
+  // never unmutes the hidden warm-up behind it.
+  useEffect(() => {
+    if (phase !== 'video') return;
+    const unlock = () => {
+      const v = videoRef.current;
+      if (!v || finished.current) return;
+      v.muted = false;
+      v.volume = 1;
+      const p = v.play();
+      if (p && p.catch) p.catch(() => {});
+    };
+    const opts = { passive: true };
+    const evts = ['pointerdown', 'keydown', 'touchstart', 'touchend', 'wheel'];
+    evts.forEach((ev) => window.addEventListener(ev, unlock, opts));
+    return () => evts.forEach((ev) => window.removeEventListener(ev, unlock));
   }, [phase]);
 
   // During the video, a deliberate scroll/swipe DOWN throws the curtain open
@@ -201,7 +228,7 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
       className="fixed inset-0 z-[9999] bg-[#030014] overflow-hidden will-change-transform"
       initial={{ opacity: 1 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ y: ['0%', '-4%', '112%'], scale: [1, 1.02, 0.94] }}
+      exit={{ y: ['0%', '4%', '-112%'], scale: [1, 1.02, 0.94] }}
       transition={{ duration: 0.95, ease: [0.7, 0, 0.2, 1], times: [0, 0.16, 1] }}
     >
       <BackgroundEffect />
@@ -216,14 +243,13 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
         <div className="relative w-[94%] max-w-5xl">
           <div className="absolute -inset-4 bg-gradient-to-r from-indigo-600/30 to-purple-600/30 blur-3xl rounded-[2rem]" />
           <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-purple-900/40 bg-black">
-            {/* `muted` warms the decoder via muted autoplay behind the splash;
-                the video-phase effect unmutes it for natural sound. */}
+            {/* Muting is controlled imperatively (warm-up muted, then unmuted)
+                so React never re-asserts a static muted attribute. */}
             <video
               ref={videoRef}
               src={introVideo}
               className="w-full h-auto block"
               autoPlay
-              muted
               playsInline
               preload="auto"
               onEnded={handleEnded}
