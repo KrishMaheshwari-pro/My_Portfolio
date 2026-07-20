@@ -223,7 +223,7 @@ const Home = () => {
                     loop
                     autoplay
                     renderer="svg"
-                    style={{ width: "400px", height: "400px" }}
+                    style={{ width: "440px", height: "440px" }}
                     className={`transition-all duration-500 ${
                       isHovering 
                         ? "scale-105 rotate-1" 
