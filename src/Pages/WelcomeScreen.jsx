@@ -146,9 +146,9 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
     if (v) { v.muted = true; const p = v.play(); if (p && p.catch) p.catch(() => {}); }
 
     // Advance to the video only once BOTH have happened: the animation is done
-    // AND the visitor interacted. ANY interaction counts — tap, click, swipe,
-    // scroll, key — at any time, during or after the animation. A tap/click/key
-    // also unlocks browser audio, so the video plays with sound.
+    // AND the visitor made an audio-unlocking gesture — tap, click, finger, or
+    // key — at any time, during or after the animation. Scroll/hover do NOT
+    // count, so the video is always entered via a gesture that unlocks sound.
     const advance = () => {
       if (tapped.current && animDone.current) setPhase('video');
     };
@@ -163,10 +163,12 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
     }, TEXT_MS);
 
     const opts = { passive: true };
-    // Only gestures the browser accepts as an audio unlock advance the intro —
-    // pointerdown (click/tap), touchstart (finger), keydown. A mouse/trackpad
-    // SCROLL (wheel) is deliberately excluded: browsers never let scrolling
-    // unlock sound, so advancing on it would drop us into a muted video.
+    // Only actions the browser accepts as an audio-unlock advance the intro:
+    // click/tap (pointerdown), key (keydown), finger (touchstart). Mouse-wheel /
+    // trackpad two-finger scroll (wheel) and hover (mousemove) are intentionally
+    // EXCLUDED — a scroll can never unlock sound, so advancing on it would drop
+    // the visitor into a muted video. This guarantees the clip always plays with
+    // sound because the visitor can only reach it via an audio-unlocking gesture.
     const evts = ['pointerdown', 'keydown', 'touchstart'];
     evts.forEach((ev) => window.addEventListener(ev, onTap, opts));
     return () => {
@@ -181,15 +183,26 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
     if (phase !== 'video') return;
     const v = videoRef.current;
     if (v) {
+      // End the muted warm-up play CLEANLY before we seek + restart with sound.
+      // Seeking/replaying while the warm-up play() promise is still pending — a
+      // real risk on Vercel's CDN, where the 2.5 MB clip is often still
+      // buffering when the visitor advances — makes the new play() reject with
+      // AbortError, which used to trip the muted fallback below. THAT was the
+      // "no sound on Vercel" bug (localhost loads instantly, so the warm-up was
+      // already done and the race never showed). Pausing first settles the
+      // warm-up so the restart-with-sound is uninterrupted.
+      try { v.pause(); } catch (_) {}
       try { v.currentTime = 0; } catch (_) {}
       v.muted = false; // play LOUD by default
       v.volume = 1;
       const p = v.play();
       if (p && p.catch) {
         p.catch(() => {
-          // If the browser blocks sound-on autoplay (a brand-new visitor with
-          // no prior interaction), fall back to muted so the clip still plays
-          // instead of freezing.
+          // Only reached if the browser refuses sound-on playback outright —
+          // e.g. a desktop visitor who advanced by SCROLLING (a wheel never
+          // unlocks audio). Never freeze: play muted so the clip still runs,
+          // and the unmute-on-next-interaction effect below raises the volume
+          // the instant they click / tap / press a key.
           v.muted = true;
           const p2 = v.play();
           if (p2 && p2.catch) p2.catch(() => {});
@@ -201,11 +214,12 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase]);
 
-  // Bring sound up the instant the visitor does ANYTHING (click / tap / key /
-  // scroll) during the video. Browsers block sound-on autoplay for gesture-less
-  // first loads, so this is what makes it audible for anyone not already
-  // "engaged". Scoped to the video stage so a click during the text splash
-  // never unmutes the hidden warm-up behind it.
+  // Bring sound up the instant the visitor makes a real gesture (click / tap /
+  // key) during the video. Browsers block sound-on autoplay for gesture-less
+  // first loads, so this is what makes it audible for anyone who reached the
+  // video without an audio-unlocking action (e.g. a desktop scroll-in). Scoped
+  // to the video stage so a click during the text splash never unmutes the
+  // hidden warm-up behind it.
   useEffect(() => {
     if (phase !== 'video') return;
     const unlock = () => {
@@ -217,7 +231,11 @@ const WelcomeScreen = ({ onLoadingComplete, startPhase = 'text' }) => {
       if (p && p.catch) p.catch(() => {});
     };
     const opts = { passive: true };
-    const evts = ['pointerdown', 'keydown', 'touchstart', 'touchend', 'wheel'];
+    // Only real activation gestures unlock audio. 'wheel' is deliberately NOT
+    // here: setting muted=false on a scroll (which carries no user activation)
+    // can make the browser PAUSE the playing video — a subtle freeze. Scrolling
+    // is handled by the scroll-to-reveal effect instead.
+    const evts = ['pointerdown', 'keydown', 'touchstart', 'touchend'];
     evts.forEach((ev) => window.addEventListener(ev, unlock, opts));
     return () => evts.forEach((ev) => window.removeEventListener(ev, unlock));
   }, [phase]);
